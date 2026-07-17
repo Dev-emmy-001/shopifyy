@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Help Center for DAMMYGOLD STORE. Find answers to frequently asked questions about orders, delivery, returns, and more.">
+    <title>Help Center | DAMMYGOLD STORE</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        .help-wrapper { max-width: 900px; margin: 70px auto 80px; padding: 0 20px; }
+        .help-wrapper h1 { font-size: 36px; text-align: center; margin-bottom: 10px; }
+        .help-wrapper > p { text-align: center; color: #666; margin-bottom: 48px; }
+        .help-search { display: flex; gap: 10px; margin-bottom: 48px; max-width: 500px; margin-left: auto; margin-right: auto; }
+        .help-search input { flex: 1; padding: 14px 18px; border: 1.5px solid #ddd; border-radius: 8px; font-size: 15px; outline: none; transition: 0.3s; }
+        .help-search input:focus { border-color: #088178; }
+        .help-search button { padding: 14px 22px; background: #088178; color: #fff; border: none; border-radius: 8px; cursor: pointer; font-size: 15px; transition: 0.3s; }
+        .help-search button:hover { background: #066b63; }
+        .help-categories { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 20px; margin-bottom: 56px; }
+        .help-cat { text-align: center; background: #f9f9f9; border: 1px solid #eee; border-radius: 12px; padding: 28px 20px; cursor: pointer; transition: 0.3s; text-decoration: none; }
+        .help-cat:hover { border-color: #088178; background: #f0faf9; transform: translateY(-4px); }
+        .help-cat i { font-size: 30px; color: #088178; margin-bottom: 12px; }
+        .help-cat h3 { font-size: 15px; color: #1a1a1a; margin: 0; }
+        .faq-section h2 { font-size: 24px; margin-bottom: 24px; color: #1a1a1a; }
+        .faq-item { border: 1px solid #eee; border-radius: 10px; margin-bottom: 12px; overflow: hidden; }
+        .faq-question { padding: 18px 20px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: 600; color: #1a1a1a; background: #fff; transition: 0.2s; }
+        .faq-question:hover { background: #f4f4f4; }
+        .faq-question i { transition: 0.3s; color: #088178; }
+        .faq-answer { padding: 0 20px; max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s; }
+        .faq-answer.open { max-height: 300px; padding: 16px 20px; }
+        .faq-answer p { color: #555; line-height: 1.8; font-size: 14px; margin: 0; }
+        .faq-question.active i { transform: rotate(180deg); }
+        .contact-cta { text-align: center; background: linear-gradient(135deg, #088178, #0db3a7); color: #fff; border-radius: 16px; padding: 48px 30px; margin-top: 60px; }
+        .contact-cta h2 { font-size: 26px; margin-bottom: 10px; color: #fff; }
+        .contact-cta p { margin-bottom: 24px; opacity: 0.9; }
+        .contact-cta a { background: #fff; color: #088178; padding: 12px 30px; border-radius: 8px; font-weight: 700; text-decoration: none; transition: 0.3s; }
+        .contact-cta a:hover { background: #e0f5f4; }
+        body.dark-mode .help-wrapper h1, body.dark-mode .faq-section h2 { color: #f1f1f1; }
+        body.dark-mode .help-wrapper > p { color: #999; }
+        body.dark-mode .help-cat { background: #1e1e1e; border-color: #333; }
+        body.dark-mode .help-cat h3 { color: #f1f1f1; }
+        body.dark-mode .help-cat:hover { background: #142a28; border-color: #088178; }
+        body.dark-mode .faq-item { border-color: #333; }
+        body.dark-mode .faq-question { background: #1e1e1e; color: #f1f1f1; }
+        body.dark-mode .faq-question:hover { background: #2a2a2a; }
+        body.dark-mode .faq-answer p { color: #b0b0b0; }
+        body.dark-mode .help-search input { background: #2a2a2a; border-color: #444; color: #f1f1f1; }
+    </style>
+</head>
+<body>
+    <section id="header">
+        <a href="index.html"><img src="IMAGE/logo.png" class="logo" alt="DAMMYGOLD STORE Logo"></a>
+        <div>
+            <ul id="navbar">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li id="lg-bag">
+                    <a href="cart.html" class="cart-icon-wrapper">
+                        <i class="fa-solid fa-shopping-bag"></i>
+                        <span class="cart-badge">0</span>
+                    </a>
+                </li>
+                <a href="#" id="close"><i class="fa-solid fa-times"></i></a>
+            </ul>
+        </div>
+        <div id="mobile">
+            <a href="cart.html" class="cart-icon-wrapper">
+                <i class="fa-solid fa-shopping-bag"></i>
+                <span class="cart-badge">0</span>
+            </a>
+            <i id="bar" class="fa-solid fa-outdent"></i>
+        </div>
+    </section>
+
+    <section id="page-header" class="about-header">
+        <h2>#HelpCenter</h2>
+        <p>We're here to help you every step of the way.</p>
+    </section>
+
+    <div class="help-wrapper">
+        <h1>How can we help you?</h1>
+        <p>Search for answers or browse our frequently asked questions below.</p>
+
+        <div class="help-search">
+            <input type="text" id="faq-search" placeholder="Search help articles..." oninput="filterFAQ()">
+            <button><i class="fa-solid fa-search"></i></button>
+        </div>
+
+        <div class="help-categories">
+            <div class="help-cat">
+                <i class="fa-solid fa-box-open"></i>
+                <h3>Orders</h3>
+            </div>
+            <div class="help-cat">
+                <i class="fa-solid fa-truck-fast"></i>
+                <h3>Delivery</h3>
+            </div>
+            <div class="help-cat">
+                <i class="fa-solid fa-rotate-left"></i>
+                <h3>Returns</h3>
+            </div>
+            <div class="help-cat">
+                <i class="fa-solid fa-credit-card"></i>
+                <h3>Payments</h3>
+            </div>
+            <div class="help-cat">
+                <i class="fa-solid fa-user-circle"></i>
+                <h3>My Account</h3>
+            </div>
+        </div>
+
+        <div class="faq-section">
+            <h2>Frequently Asked Questions</h2>
+
+            <div class="faq-item" data-text="how do i place an order">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    How do I place an order?
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Browse our Shop, click on a product you love, select your size and quantity, then click "Add to Cart." When you're ready, go to your Cart and click "Proceed to Checkout" to complete your order with your delivery details and payment.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-text="can i cancel or change my order">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    Can I cancel or change my order?
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes! You can cancel or modify your order within 2 hours of placing it by contacting us at support@dammygoldstore.com. Once an order has been dispatched, it can no longer be cancelled, but you may return it after delivery.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-text="how long does delivery take">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    How long does delivery take?
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Delivery times vary by location. Lagos: 1–2 business days. Abuja & Port Harcourt: 2–3 business days. Other states: 3–7 business days. You can track your order on our <a href="track-order.html" style="color:#088178;">Track My Order</a> page.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-text="how do i return an item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    How do I return an item?
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>We accept returns within 7 days of delivery for unworn, unwashed items with original tags attached. Contact us at support@dammygoldstore.com with your order number and photos of the item to start the return process.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-text="what payment methods do you accept">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    What payment methods do you accept?
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>We accept Bank Transfer, USSD Mobile Banking, and Debit/Credit Cards (Visa and Mastercard). All transactions are secured and encrypted for your safety.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-text="how do i use a coupon code discount">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    How do I use a coupon code?
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>On your Cart page, you will see a "Coupon Code" field. Enter your code and click "Apply." Valid codes are: <strong>SAVE10</strong> (10% off) and <strong>DAMMYGOLD20</strong> (20% off). Codes are case-sensitive and cannot be combined.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-text="how do i reset my password account">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    How do I reset my password?
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>On the Sign In page, click "Forgot Password?" and enter your registered email address. You will receive a reset link within a few minutes. Check your spam folder if you don't see it.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-text="is my payment information secure">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    Is my payment information secure?
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Absolutely. DAMMYGOLD STORE uses industry-standard encryption to protect all your payment and personal data. We never store your card details on our servers. Your security is our top priority.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="contact-cta">
+            <h2>Still need help?</h2>
+            <p>Our friendly customer support team is available Monday – Saturday, 10:00 AM – 6:00 PM.</p>
+            <a href="contact.html">Contact Support</a>
+        </div>
+    </div>
+
+    <footer class="section-p1">
+        <div class="col">
+            <img class="logo" src="IMAGE/logo.png" alt="DAMMYGOLD STORE">
+            <h4>Contact</h4>
+            <p><strong>Address:</strong> 562 Wellington Road, Street 32, Lagos</p>
+            <p><strong>Phone:</strong> +234 801 234 5678</p>
+            <p><strong>Hours:</strong> 10:00 - 18:00, Mon - Sat</p>
+            <div class="follo">
+                <h4>Follow us</h4>
+                <div class="icon">
+                    <i class="fab fa-facebook-f"></i><i class="fab fa-twitter"></i>
+                    <i class="fab fa-instagram"></i><i class="fab fa-pinterest-p"></i>
+                    <i class="fab fa-youtube"></i>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <h4>About</h4>
+            <a href="about.html">About us</a>
+            <a href="delivery.html">Delivery Information</a>
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="terms.html">Terms &amp; Conditions</a>
+            <a href="contact.html">Contact Us</a>
+        </div>
+        <div class="col">
+            <h4>My Account</h4>
+            <a href="Login.html">Sign In</a>
+            <a href="cart.html">View Cart</a>
+            <a href="wishlist.html">My Wishlist</a>
+            <a href="track-order.html">Track My Order</a>
+            <a href="help.html">Help</a>
+        </div>
+        <div class="col install">
+            <h4>Install App</h4>
+            <p>From App Store or Google Play</p>
+            <div class="row">
+                <img src="IMAGE/pay/app.jpg" alt="App Store">
+                <img src="IMAGE/pay/play.jpg" alt="Google Play">
+            </div>
+            <p>Secured Payment Gateways</p>
+            <img src="IMAGE/pay/pay.png" alt="Payment methods">
+        </div>
+        <div class="copyright">
+            <p>&copy; 2026, DAMMYGOLD STORE — Fashion E-Commerce</p>
+        </div>
+    </footer>
+    <script src="products.js"></script>
+    <script src="script.js"></script>
+    <script src="cart.js"></script>
+    <script>
+        function toggleFAQ(el) {
+            const answer = el.nextElementSibling;
+            const isOpen = answer.classList.contains('open');
+            document.querySelectorAll('.faq-answer').forEach(a => a.classList.remove('open'));
+            document.querySelectorAll('.faq-question').forEach(q => q.classList.remove('active'));
+            if (!isOpen) {
+                answer.classList.add('open');
+                el.classList.add('active');
+            }
+        }
+        function filterFAQ() {
+            const query = document.getElementById('faq-search').value.toLowerCase();
+            document.querySelectorAll('.faq-item').forEach(item => {
+                const text = item.getAttribute('data-text') + ' ' + item.textContent.toLowerCase();
+                item.style.display = text.includes(query) ? '' : 'none';
+            });
+        }
+    </script>
+</body>
+</html>

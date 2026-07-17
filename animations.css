@@ -1,0 +1,496 @@
+/* ==========================================================
+   animations.css — Fashion E-Commerce Animation System
+   Includes: scroll reveal, hero entrance, hover effects,
+             back-to-top button, page transitions, cart badge
+   ========================================================== */
+
+/* ── Page Load Fade ─────────────────────────────────────── */
+body {
+    animation: pageLoad 0.5s ease-in-out;
+}
+
+@keyframes pageLoad {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Scroll Reveal Base ─────────────────────────────────── */
+.scroll-reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.scroll-reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Staggered children */
+.scroll-reveal:nth-child(1) { transition-delay: 0.05s; }
+.scroll-reveal:nth-child(2) { transition-delay: 0.12s; }
+.scroll-reveal:nth-child(3) { transition-delay: 0.19s; }
+.scroll-reveal:nth-child(4) { transition-delay: 0.26s; }
+.scroll-reveal:nth-child(5) { transition-delay: 0.33s; }
+.scroll-reveal:nth-child(6) { transition-delay: 0.40s; }
+.scroll-reveal:nth-child(7) { transition-delay: 0.47s; }
+.scroll-reveal:nth-child(8) { transition-delay: 0.54s; }
+
+/* ── Hero Section Entrance ──────────────────────────────── */
+#hero h4 { animation: heroSlideDown 0.7s cubic-bezier(0.22, 1, 0.36, 1) both; }
+#hero h2 { animation: heroSlideDown 0.7s 0.15s cubic-bezier(0.22, 1, 0.36, 1) both; }
+#hero h1 { animation: heroSlideDown 0.7s 0.3s cubic-bezier(0.22, 1, 0.36, 1) both; }
+#hero p  { animation: heroFadeIn 0.8s 0.45s ease both; }
+#hero button { animation: heroFadeIn 0.8s 0.6s ease both; }
+
+@keyframes heroSlideDown {
+    from { opacity: 0; transform: translateY(-25px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes heroFadeIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Product Card Hover Effects ─────────────────────────── */
+#product-1 .pro {
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow 0.35s ease;
+    overflow: hidden;
+}
+
+#product-1 .pro:hover {
+    transform: translateY(-8px) scale(1.01);
+    box-shadow: 0 20px 50px rgba(8, 129, 120, 0.15) !important;
+}
+
+#product-1 .pro img {
+    transition: transform 0.5s ease;
+}
+
+#product-1 .pro:hover img {
+    transform: scale(1.05);
+}
+
+/* Product quick-action overlay */
+#product-1 .pro .pro-overlay {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    opacity: 0;
+    transform: translateX(12px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    z-index: 10;
+}
+
+#product-1 .pro:hover .pro-overlay {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.pro-overlay-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #fff;
+    border: 1px solid #cce7d0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 13px;
+    color: #088178;
+    transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+    text-decoration: none;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.pro-overlay-btn:hover {
+    background: #088178;
+    color: #fff;
+    transform: scale(1.1);
+}
+
+/* ── Feature Box Animation ──────────────────────────────── */
+#feature .feature-box {
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow 0.35s ease;
+}
+
+#feature .feature-box:hover {
+    transform: translateY(-6px) scale(1.03);
+}
+
+/* ── Header Scrolled State ──────────────────────────────── */
+#header {
+    transition: box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+#header.header-scrolled {
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12) !important;
+}
+
+/* ── Cart Badge ─────────────────────────────────────────── */
+.cart-badge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 4px;
+    background: #e74c3c;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    border-radius: 50px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    border: 2px solid #fff;
+    pointer-events: none;
+}
+
+@keyframes badgePulse {
+    0%   { transform: scale(1); }
+    40%  { transform: scale(1.4); }
+    70%  { transform: scale(0.9); }
+    100% { transform: scale(1); }
+}
+
+.cart-badge.badge-pulse {
+    animation: badgePulse 0.4s ease;
+}
+
+/* Cart icon wrapper — needs relative positioning */
+.cart-icon-wrapper {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ── Toast Notification ──────────────────────────────────── */
+.cart-toast {
+    position: fixed;
+    bottom: 28px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: #222;
+    color: #fff;
+    padding: 14px 24px;
+    border-radius: 50px;
+    font-size: 14px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 99999;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+    opacity: 0;
+    transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    white-space: nowrap;
+    pointer-events: none;
+    min-width: 200px;
+    max-width: 90vw;
+    justify-content: center;
+}
+
+.cart-toast--show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+.cart-toast--success {
+    background: linear-gradient(135deg, #088178, #04b49c);
+}
+
+.cart-toast--error {
+    background: linear-gradient(135deg, #c0392b, #e74c3c);
+}
+
+.cart-toast i {
+    font-size: 16px;
+}
+
+/* ── Back to Top Button ──────────────────────────────────── */
+#back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: #088178;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    z-index: 9999;
+    opacity: 0;
+    transform: translateY(20px) scale(0.8);
+    transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+                background 0.2s ease;
+    box-shadow: 0 4px 20px rgba(8, 129, 120, 0.4);
+    pointer-events: none;
+}
+
+#back-to-top.btt-visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: all;
+}
+
+#back-to-top:hover {
+    background: #066b63;
+    transform: translateY(-3px) scale(1.05);
+}
+
+/* ── Cart Page Styles ────────────────────────────────────── */
+.cart-remove-btn {
+    background: none;
+    border: none;
+    color: #e74c3c;
+    font-size: 16px;
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease;
+}
+
+.cart-remove-btn:hover {
+    background: #fde8e8;
+}
+
+.cart-img {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid #eee;
+}
+
+.cart-product-name {
+    font-weight: 600;
+    font-size: 13px;
+}
+
+.cart-brand {
+    display: block;
+    font-size: 11px;
+    color: #888;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+}
+
+.cart-price, .cart-subtotal {
+    font-weight: 700;
+    color: #088178;
+}
+
+.cart-qty-control {
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid #e2e9e1;
+    border-radius: 30px;
+    overflow: hidden;
+    height: 38px;
+}
+
+.cart-qty-control button {
+    background: none;
+    border: none;
+    padding: 0 10px;
+    cursor: pointer;
+    font-size: 12px;
+    color: #088178;
+    height: 100%;
+    transition: background 0.2s;
+}
+
+.cart-qty-control button:hover {
+    background: #e8f6ea;
+}
+
+.cart-qty-control input {
+    width: 44px;
+    text-align: center;
+    border: none;
+    border-left: 1px solid #e2e9e1;
+    border-right: 1px solid #e2e9e1;
+    outline: none;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 0 4px;
+    height: 100%;
+    -moz-appearance: textfield;
+}
+
+.cart-qty-control input::-webkit-inner-spin-button,
+.cart-qty-control input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+}
+
+/* Cart empty state */
+#cart-empty {
+    text-align: center;
+    padding: 60px 20px;
+    display: none;
+}
+
+#cart-empty i {
+    font-size: 60px;
+    color: #cce7d0;
+    margin-bottom: 20px;
+    display: block;
+}
+
+#cart-empty h3 {
+    font-size: 22px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+#cart-empty p {
+    color: #888;
+    margin-bottom: 24px;
+}
+
+#cart-empty a {
+    background: #088178;
+    color: #fff;
+    padding: 12px 28px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    transition: background 0.2s ease;
+}
+
+#cart-empty a:hover {
+    background: #066b63;
+}
+
+/* Cart row animation */
+.cart-row {
+    animation: cartRowIn 0.4s ease both;
+}
+
+@keyframes cartRowIn {
+    from { opacity: 0; transform: translateX(-10px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+
+/* Coupon feedback */
+.coupon-feedback {
+    font-size: 13px;
+    font-weight: 600;
+    margin-top: 8px;
+    padding: 8px 12px;
+    border-radius: 6px;
+    display: none;
+}
+
+.coupon-feedback--success {
+    background: #e8f6ea;
+    color: #088178;
+    border: 1px solid #cce7d0;
+}
+
+.coupon-feedback--error {
+    background: #fde8e8;
+    color: #c0392b;
+    border: 1px solid #f5c2c2;
+}
+
+/* Input error state */
+.input-error {
+    border-color: #e74c3c !important;
+    animation: inputShake 0.4s ease;
+}
+
+@keyframes inputShake {
+    0%, 100% { transform: translateX(0); }
+    20%       { transform: translateX(-6px); }
+    40%       { transform: translateX(6px); }
+    60%       { transform: translateX(-4px); }
+    80%       { transform: translateX(4px); }
+}
+
+/* Small image active state */
+.small-img--active {
+    border: 2px solid #088178 !important;
+    border-radius: 8px;
+}
+
+/* Discount row in subtotal */
+#discount-row {
+    display: none;
+    color: #e74c3c;
+}
+
+/* ── Navbar Button Hover ─────────────────────────────────── */
+#navbar a button {
+    transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1) !important;
+}
+
+/* ── Banner hover effects ────────────────────────────────── */
+#sm-banner .banner-box {
+    transition: transform 0.35s ease;
+}
+
+#sm-banner .banner-box:hover {
+    transform: scale(1.01);
+}
+
+#banner-3 .banner-box {
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+    overflow: hidden;
+}
+
+#banner-3 .banner-box:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+}
+
+/* ── Footer social icon hover ────────────────────────────── */
+footer .icon i {
+    font-size: 18px;
+    transition: transform 0.25s ease, color 0.25s ease;
+    display: inline-block;
+}
+
+footer .icon i:hover {
+    transform: translateY(-4px) scale(1.15);
+}
+
+/* ── Responsive Adjustments ─────────────────────────────── */
+@media (max-width: 477px) {
+    .cart-toast {
+        bottom: 16px;
+        font-size: 13px;
+        padding: 12px 18px;
+    }
+
+    #back-to-top {
+        bottom: 16px;
+        right: 16px;
+        width: 40px;
+        height: 40px;
+        font-size: 14px;
+    }
+}

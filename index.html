@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Fashion E-Commerce — Shop the latest trends in clothing and accessories. Up to 70% off on T-Shirts, Footwear, and more. Free shipping on all orders.">
+    <title>FASHION | E-COMMERCE — Shop Trendy Styles Online</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+    <button id="back-to-top" aria-label="Back to top">
+        <i class="fa-solid fa-chevron-up"></i>
+    </button>
+
+    <section id="header">
+        <a href="index.html"><img src="IMAGE/logo (2).png" class="logo" alt="Fashion Store Logo" width="250px"></a>
+        <div>
+            <ul id="navbar">
+                <li><a class="active" href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li id="lg-bag">
+                    <a href="cart.html" class="cart-icon-wrapper" aria-label="Shopping cart">
+                        <i class="fa-solid fa-shopping-bag"></i>
+                        <span class="cart-badge" aria-live="polite">0</span>
+                    </a>
+                </li>
+                <a href="Signup.html"><button>Let's Get Started</button></a>
+                <a href="#" id="close" aria-label="Close menu"><i class="fa-solid fa-times"></i></a>
+            </ul>
+        </div>
+        <div id="mobile">
+            <a href="cart.html" class="cart-icon-wrapper" aria-label="Shopping cart">
+                <i class="fa-solid fa-shopping-bag"></i>
+                <span class="cart-badge" aria-live="polite">0</span>
+            </a>
+            <i id="bar" class="fa-solid fa-outdent" aria-label="Open menu"></i>
+        </div>
+    </section>
+
+    <section id="hero">
+        <h4>Trade-in-offer</h4>
+        <h2>Super value deals</h2>
+        <h1>On all products</h1>
+        <p>Save more with coupons &amp; up to 70% off!</p>
+        <button id="hero-shop-btn">Shop Now</button>
+    </section>
+
+    <section id="feature" class="section-p1 scroll-reveal">
+        <div class="feature-box">
+            <img src="IMAGE/features/f1.png" alt="Free Shipping icon">
+            <h6>Free Shipping</h6>
+        </div>
+        <div class="feature-box">
+            <img src="IMAGE/features/f2.png" alt="Online Order icon">
+            <h6>Online Order</h6>
+        </div>
+        <div class="feature-box">
+            <img src="IMAGE/features/f3.png" alt="Save Money icon">
+            <h6>Save Money</h6>
+        </div>
+        <div class="feature-box">
+            <img src="IMAGE/features/f4.png" alt="Promotions icon">
+            <h6>Promotions</h6>
+        </div>
+        <div class="feature-box">
+            <img src="IMAGE/features/f5.png" alt="Happy Sell icon">
+            <h6>Happy Sell</h6>
+        </div>
+        <div class="feature-box">
+            <img src="IMAGE/features/f6.png" alt="24/7 Support icon">
+            <h6>24/7 Support</h6>
+        </div>
+    </section>
+
+    <section id="product-1" class="section-p1">
+        <h2 class="scroll-reveal">Featured Products</h2>
+        <p class="scroll-reveal">Summer Collection New Modern Design</p>
+        <div class="pro-container">
+            <div class="pro scroll-reveal" onclick="window.location.href='sproduct.html?id=f1'">
+                <img src="IMAGE/products/f1.jpg" alt="Cartoon Astronaut T-Shirt by Adidas">
+                <div class="pro-overlay">
+                    <a href="sproduct.html?id=f1" class="pro-overlay-btn" title="Quick View" onclick="event.stopPropagation()"><i class="fa-regular fa-eye"></i></a>
+                    <button class="pro-overlay-btn" title="Wishlist" onclick="event.stopPropagation()"><i class="fa-regular fa-heart"></i></button>
+                </div>
+                <div class="des">
+                    <span>adidas</span>
+                    <h5>Cartoon Astronaut T-Shirts</h5>
+                    <div class="star">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                    </div>
+                    <h4>₦78,000</h4>
+                </div>
+                <a href="#" onclick="event.stopPropagation()"><i class="fa fa-shopping-cart"></i></a>
+            </div>
+            <div class="pro scroll-reveal" onclick="window.location.href='sproduct.html?id=f2'">
+                <img src="IMAGE/products/f2.jpg" alt="Sports Performance T-Shirt by Adidas">
+                <div class="pro-overlay">
+                    <a href="sproduct.html?id=f2" class="pro-overlay-btn" title="Quick View" onclick="event.stopPropagation()"><i class="fa-regular fa-eye"></i></a>
+                    <button class="pro-overlay-btn" title="Wishlist" onclick="event.stopPropagation()"><i class="fa-regular fa-heart"></i></button>
+                </div>
+                <div class="des">
+                    <span>adidas</span>
+                    <h5>Sports Performance T-Shirt</h5>
+                    <div class="star">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                    </div>
+                    <h4>₦65,000</h4>
+                </div>
+                <a href="#" onclick="event.stopPropagation()"><i class="fa fa-shopping-cart"></i></a>
+            </div>
+            <div class="pro scroll-reveal" onclick="window.location.href='sproduct.html?id=f3'">
+                <img src="IMAGE/products/f3.jpg" alt="Classic Polo T-Shirt by Adidas">
+                <div class="pro-overlay">
+                    <a href="sproduct.html?id=f3" class="pro-overlay-btn" title="Quick View" onclick="event.stopPropagation()"><i class="fa-regular fa-eye"></i></a>
+                    <button class="pro-overlay-btn" title="Wishlist" onclick="event.stopPropagation()"><i class="fa-regular fa-heart"></i></button>
+                </div>
+                <div class="des">
+                    <span>adidas</span>
+                    <h5>Classic Polo T-Shirt</h5>
+                    <div class="star">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <h4>₦89,000</h4>
+                </div>
+                <a href="#" onclick="event.stopPropagation()"><i class="fa fa-shopping-cart"></i></a>
+            </div>
+            <div class="pro scroll-reveal" onclick="window.location.href='sproduct.html?id=f4'">
+                <img src="IMAGE/products/f4.jpg" alt="Urban Style T-Shirt by Adidas">
+                <div class="pro-overlay">
+                    <a href="sproduct.html?id=f4" class="pro-overlay-btn" title="Quick View" onclick="event.stopPropagation()"><i class="fa-regular fa-eye"></i></a>
+                    <button class="pro-overlay-btn" title="Wishlist" onclick="event.stopPropagation()"><i class="fa-regular fa-heart"></i></button>
+                </div>
+                <div class="des">
+                    <span>adidas</span>
+                    <h5>Urban Style T-Shirt</h5>
+                    <div class="star">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                    </div>
+                    <h4>₦72,000</h4>
+                </div>
+                <a href="#" onclick="event.stopPropagation()"><i class="fa fa-shopping-cart"></i></a>
+            </div>
+            <div class="pro scroll-reveal" onclick="window.location.href='sproduct.html?id=f5'">
+                <img src="IMAGE/products/f5.jpg" alt="Graphic Print T-Shirt by Adidas">
+                <div class="pro-overlay">
+                    <a href="sproduct.html?id=f5" class="pro-overlay-btn" title="Quick View" onclick="event.stopPropagation()"><i class="fa-regular fa-eye"></i></a>
+                    <button class="pro-overlay-btn" title="Wishlist" onclick="event.stopPropagation()"><i class="fa-regular fa-heart"></i></button>
+                </div>
+                <div class="des">
+                    <span>adidas</span>
+                    <h5>Graphic Print T-Shirt</h5>
+                    <div class="star">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                    </div>
+                    <h4>₦55,000</h4>
+                </div>
+                <a href="#" onclick="event.stopPropagation()"><i class="fa fa-shopping-cart"></i></a>
+            </div>
+            <div class="pro scroll-reveal" onclick="window.location.href='sproduct.html?id=f6'">
+                <img src="IMAGE/products/f6.jpg" alt="Summer Breeze T-Shirt by Adidas">
+                <div class="pro-overlay">
+                    <a href="sproduct.html?id=f6" class="pro-overlay-btn" title="Quick View" onclick="event.stopPropagation()"><i class="fa-regular fa-eye"></i></a>
+                    <button class="pro-overlay-btn" title="Wishlist" onclick="event.stopPropagation()"><i class="fa-regular fa-heart"></i></button>
+                </div>
+                <div class="des">
+                    <span>adidas</span>
+                    <h5>Summer Breeze T-Shirt</h5>
+                    <div class="star">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                    </div>
+                    <h4>₦68,000</h4>
+                </div>
+                <a href="#" onclick="event.stopPropagation()"><i class="fa fa-shopping-cart"></i></a>
+            </div>
+            <div class="pro scroll-reveal" onclick="window.location.href='sproduct.html?id=f7'">
+                <img src="IMAGE/products/f7.jpg" alt="Vintage Wash T-Shirt by Adidas">
+                <div class="pro-overlay">
+                    <a href="sproduct.html?id=f7" class="pro-overlay-btn" title="Quick View" onclick="event.stopPropagation()"><i class="fa-regular fa-eye"></i></a>
+                    <button class="pro-overlay-btn" title="Wishlist" onclick="event.stopPropagation()"><i class="fa-regular fa-heart"></i></button>
+                </div>
+                <div class="des">
+                    <span>adidas</span>
+                    <h5>Vintage Wash T-Shirt</h5>
+                    <div class="star">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <h4>₦92,000</h4>
+                </div>
+                <a href="#" onclick="event.stopPropagation()"><i class="fa fa-shopping-cart"></i></a>
+            </div>
+            <div class="pro scroll-reveal" onclick="window.location.href='sproduct.html?id=f8'">
+                <img src="IMAGE/products/f8.jpg" alt="Active Wear T-Shirt by Adidas">
+                <div class="pro-overlay">
+                    <a href="sproduct.html?id=f8" class="pro-overlay-btn" title="Quick View" onclick="event.stopPropagation()"><i class="fa-regular fa-eye"></i></a>
+                    <button class="pro-overlay-btn" title="Wishlist" onclick="event.stopPropagation()"><i class="fa-regular fa-heart"></i></button>
+                </div>
+                <div class="des">
+                    <span>adidas</span>
+                    <h5>Active Wear T-Shirt</h5>
+                    <div class="star">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                    </div>
+                    <h4>₦78,000</h4>
+                </div>
+                <a href="#" onclick="event.stopPropagation()"><i class="fa fa-shopping-cart"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <section id="banner" class="section-m1 scroll-reveal">
+        <h4>Members-Only Deals</h4>
+        <h2>Up to <span>70% off</span> — All T-Shirts &amp; Accessories</h2>
+        <button class="normal" onclick="window.location.href='shop.html'">Explore More</button>
+    </section>
+
+    <section id="product-1" class="section-p1">
+        <h2 class="scroll-reveal">New Arrivals</h2>
+        <p class="scroll-reveal">Summer Collection New Modern Design</p>
+        <div class="pro-container">
+            <div class="pro scroll-reveal" onclick="window.location.href='sproduct.html?id=n1'">
+                <img src="IMAGE/products/n1.jpg" alt="New Arrival T-Shirt 1">
+                <div class="pro-overlay">
+                    <a href="sproduct.html?id=n1" class="pro-overlay-btn" title="Quick View" onclick="event.stopPropagation()"><i class="fa-regular fa-eye"></i></a>
+                    <button class="pro-overlay-btn" title="Wishlist" onclick="event.stopPropagation()"><i class="fa-regular fa-heart"></i></button>
+                </div>
+                <div class="des">
+                    <span>adidas</span>
+                    <h5>Fresh Drop Tee — Midnight</h5>
+                    <div class="star">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <h4>₦82,000</h4>
+                </div>
+                <a href="#" onclick="event.stopPropagation()"><i class="fa fa-shopping-cart"></i></a>
+            </div>
+            <div class="pro scroll-reveal" onclick="window.location.href='sproduct.html?id=n2'">
+                <img src="IMAGE/products/n2.jpg" alt="New Arrival T-Shirt 2">
+                <div class="pro-overlay">
+                    <a href="sproduct.html?id=n2" class="pro-overlay-btn" title="Quick View" onclick="event.stopPropagation()"><i class="fa-regular fa-eye"></i></a>
+                    <button class="pro-overlay-btn" title="Wishlist" onclick="event.stopPropagation()"><i class="fa-regular fa-heart"></i></button>
+                </div>
+                <div class="des">
+                    <span>adidas</span>
+                    <h5>Cali Surf Cotton Tee</h5>
+                    <div class="star">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                    </div>
+                    <h4>₦74,000</h4>
+                </div>
+                <a href="#" onclick="event.stopPropagation()"><i class="fa fa-shopping-cart"></i></a>
+            </div>
+            <div class="pro scroll-reveal" onclick="window.location.href='sproduct.html?id=n3'">
+                <img src="IMAGE/products/n3.jpg" alt="New Arrival T-Shirt 3">
+                <div class="pro-overlay">
+                    <a href="sproduct.html?id=n3" class="pro-overlay-btn" title="Quick View" onclick="event.stopPropagation()"><i class="fa-regular fa-eye"></i></a>
+                    <button class="pro-overlay-btn" title="Wishlist" onclick="event.stopPropagation()"><i class="fa-regular fa-heart"></i></button>
+                </div>
+                <div class="des">
+                    <span>adidas</span>
+                    <h5>Tokyo Street Style Tee</h5>
+                    <div class="star">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                    </div>
+                    <h4>₦79,000</h4>
+                </div>
+                <a href="#" onclick="event.stopPropagation()"><i class="fa fa-shopping-cart"></i></a>
+            </div>
+            <div class="pro scroll-reveal" onclick="window.location.href='sproduct.html?id=n4'">
+                <img src="IMAGE/products/n4.jpg" alt="New Arrival T-Shirt 4">
+                <div class="pro-overlay">
+                    <a href="sproduct.html?id=n4" class="pro-overlay-btn" title="Quick View" onclick="event.stopPropagation()"><i class="fa-regular fa-eye"></i></a>
+                    <button class="pro-overlay-btn" title="Wishlist" onclick="event.stopPropagation()"><i class="fa-regular fa-heart"></i></button>
+                </div>
+                <div class="des">
+                    <span>adidas</span>
+                    <h5>Urban Explorer Hoodie-Tee</h5>
+                    <div class="star">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <h4>₦95,000</h4>
+                </div>
+                <a href="#" onclick="event.stopPropagation()"><i class="fa fa-shopping-cart"></i></a>
+            </div>
+            <div class="pro scroll-reveal" onclick="window.location.href='sproduct.html?id=n5'">
+                <img src="IMAGE/products/n5.jpg" alt="New Arrival T-Shirt 5">
+                <div class="pro-overlay">
+                    <a href="sproduct.html?id=n5" class="pro-overlay-btn" title="Quick View" onclick="event.stopPropagation()"><i class="fa-regular fa-eye"></i></a>
+                    <button class="pro-overlay-btn" title="Wishlist" onclick="event.stopPropagation()"><i class="fa-regular fa-heart"></i></button>
+                </div>
+                <div class="des">
+                    <span>adidas</span>
+                    <h5>Essential Comfort Tee</h5>
+                    <div class="star">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                    </div>
+                    <h4>₦61,000</h4>
+                </div>
+                <a href="#" onclick="event.stopPropagation()"><i class="fa fa-shopping-cart"></i></a>
+            </div>
+            <div class="pro scroll-reveal" onclick="window.location.href='sproduct.html?id=n6'">
+                <img src="IMAGE/products/n6.jpg" alt="New Arrival T-Shirt 6">
+                <div class="pro-overlay">
+                    <a href="sproduct.html?id=n6" class="pro-overlay-btn" title="Quick View" onclick="event.stopPropagation()"><i class="fa-regular fa-eye"></i></a>
+                    <button class="pro-overlay-btn" title="Wishlist" onclick="event.stopPropagation()"><i class="fa-regular fa-heart"></i></button>
+                </div>
+                <div class="des">
+                    <span>adidas</span>
+                    <h5>Bold Logo Statement Tee</h5>
+                    <div class="star">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                    </div>
+                    <h4>₦70,000</h4>
+                </div>
+                <a href="#" onclick="event.stopPropagation()"><i class="fa fa-shopping-cart"></i></a>
+            </div>
+            <div class="pro scroll-reveal" onclick="window.location.href='sproduct.html?id=n7'">
+                <img src="IMAGE/products/n7.jpg" alt="New Arrival T-Shirt 7">
+                <div class="pro-overlay">
+                    <a href="sproduct.html?id=n7" class="pro-overlay-btn" title="Quick View" onclick="event.stopPropagation()"><i class="fa-regular fa-eye"></i></a>
+                    <button class="pro-overlay-btn" title="Wishlist" onclick="event.stopPropagation()"><i class="fa-regular fa-heart"></i></button>
+                </div>
+                <div class="des">
+                    <span>adidas</span>
+                    <h5>Minimalist Black Tee</h5>
+                    <div class="star">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <h4>₦85,000</h4>
+                </div>
+                <a href="#" onclick="event.stopPropagation()"><i class="fa fa-shopping-cart"></i></a>
+            </div>
+            <div class="pro scroll-reveal" onclick="window.location.href='sproduct.html?id=n8'">
+                <img src="IMAGE/products/n8.jpg" alt="New Arrival T-Shirt 8">
+                <div class="pro-overlay">
+                    <a href="sproduct.html?id=n8" class="pro-overlay-btn" title="Quick View" onclick="event.stopPropagation()"><i class="fa-regular fa-eye"></i></a>
+                    <button class="pro-overlay-btn" title="Wishlist" onclick="event.stopPropagation()"><i class="fa-regular fa-heart"></i></button>
+                </div>
+                <div class="des">
+                    <span>adidas</span>
+                    <h5>Retro Wave Print Tee</h5>
+                    <div class="star">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                    </div>
+                    <h4>₦77,000</h4>
+                </div>
+                <a href="#" onclick="event.stopPropagation()"><i class="fa fa-shopping-cart"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <section id="sm-banner" class="section-p1 scroll-reveal">
+        <div class="banner-box">
+            <h4>crazy deals</h4>
+            <h2>buy 1 get 1 free</h2>
+            <span>The best classic dress is on sale at care</span>
+            <button class="win" onclick="window.location.href='shop.html'">Learn More</button>
+        </div>
+        <div class="banner-box banner-box2">
+            <h4>spring summer</h4>
+            <h2>upcoming season</h2>
+            <span>The best classic dress is on sale at care</span>
+            <button class="win" onclick="window.location.href='shop.html'">Collection</button>
+        </div>
+    </section>
+
+    <section id="banner-3" class="scroll-reveal">
+        <div class="banner-box">
+            <h2>SEASONAL SALE</h2>
+            <h3>Winter Collection -50% OFF</h3>
+        </div>
+        <div class="banner-box banner-box2">
+            <h2>NEW FOOTWEAR COLLECTION</h2>
+            <h3>Spring / Summer 2026</h3>
+        </div>
+        <div class="banner-box banner-box3">
+            <h2>T-SHIRTS</h2>
+            <h3>New Trendy Prints</h3>
+        </div>
+    </section>
+
+    <section id="newsletter" class="section-p1 section-m1 scroll-reveal">
+        <div class="newstext">
+            <h4>Sign Up For Newsletters</h4>
+            <p>Get E-mail updates about our latest shop and <span>special offers.</span></p>
+        </div>
+        <div class="form">
+            <input type="email" id="newsletter-email" placeholder="Your email address" aria-label="Email for newsletter">
+            <button class="normal" id="newsletter-btn">Sign Up</button>
+        </div>
+    </section>
+
+    <footer class="section-p1">
+        <div class="col">
+            <img class="logo" src="IMAGE/logo (2).png" alt="Fashion Store Logo" width="200px">
+            <h4>Contact</h4>
+            <p><strong>Address:</strong> lagos Ipaja</p>
+            <p><strong>Phone:</strong> 09056431584</p>
+            <p><strong>Hours:</strong> 10:00 - 18:00, Mon - Sat</p>
+            <div class="follo">
+                <h4>Follow us</h4>
+                <div class="icon">
+                    <i class="fab fa-facebook-f" title="Facebook"></i>
+                    <i class="fab fa-twitter" title="Twitter"></i>
+                    <i class="fab fa-instagram" title="Instagram"></i>
+                    <i class="fab fa-pinterest-p" title="Pinterest"></i>
+                    <i class="fab fa-youtube" title="YouTube"></i>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <h4>About</h4>
+            <a href="about.html">About us</a>
+            <a href="delivery.html">Delivery Information</a>
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="terms.html">Terms &amp; Conditions</a>
+            <a href="contact.html">Contact Us</a>
+        </div>
+        <div class="col">
+            <h4>My Account</h4>
+            <a href="Login.html">Sign In</a>
+            <a href="cart.html">View Cart</a>
+            <a href="wishlist.html">My Wishlist</a>
+            <a href="track-order.html">Track My Order</a>
+            <a href="help.html">Help</a>
+        </div>
+        <div class="col install">
+            <h4>Install App</h4>
+            <p>From App Store or Google Play</p>
+            <div class="row">
+                <img src="IMAGE/pay/app.jpg" alt="Download on App Store">
+                <img src="IMAGE/pay/play.jpg" alt="Get it on Google Play">
+            </div>
+            <p>Secured Payment Gateways</p>
+            <img src="IMAGE/pay/pay.png" alt="Accepted payment methods">
+        </div>
+        <div class="copyright">
+            <p>&copy; 2026, DammyGold — Fashion E-Commerce</p>
+        </div>
+    </footer>
+
+    <script src="products.js"></script>
+    <script src="script.js"></script>
+    <script src="cart.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const newsletterInput = document.getElementById('newsletter-email');
+            const newsletterBtn   = document.getElementById('newsletter-btn');
+            if (newsletterInput && newsletterBtn) {
+                newsletterBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    validateNewsletter(newsletterInput, newsletterBtn);
+                });
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Fashion E-Commerce — Product details.">
+    <title>PRODUCT DETAILS | FASHION E-COMMERCE</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+    <button id="back-to-top" aria-label="Back to top">
+        <i class="fa-solid fa-chevron-up"></i>
+    </button>
+
+    <section id="header">
+        <a href="index.html"><img src="IMAGE/logo (2).png" class="logo" alt="Fashion Store Logo" width="250px"></a>
+        <div>
+            <ul id="navbar">
+                <li><a href="index.html">Home</a></li>
+                <li><a class="active" href="shop.html">Shop</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li id="lg-bag">
+                    <a href="cart.html" class="cart-icon-wrapper" aria-label="Shopping cart">
+                        <i class="fa-solid fa-shopping-bag"></i>
+                        <span class="cart-badge" aria-live="polite">0</span>
+                    </a>
+                </li>
+                <a href="Signup.html"><button>Let's Get Started</button></a>
+                <a href="#" id="close" aria-label="Close menu"><i class="fa-solid fa-times"></i></a>
+            </ul>
+        </div>
+        <div id="mobile">
+            <a href="cart.html" class="cart-icon-wrapper" aria-label="Shopping cart">
+                <i class="fa-solid fa-shopping-bag"></i>
+                <span class="cart-badge" aria-live="polite">0</span>
+            </a>
+            <i id="bar" class="fa-solid fa-outdent" aria-label="Open menu"></i>
+        </div>
+    </section>
+
+    <section id="prodetails" class="section-p1 scroll-reveal">
+        <div class="single-pro-image">
+            <div class="img-zoom-container" id="img-zoom-container">
+                <img src="IMAGE/products/f1.jpg" width="100%" id="MainImg" alt="Product Main View">
+            </div>
+            <div class="small-img-group" id="small-img-group">
+                <div class="small-img-col">
+                    <img src="IMAGE/products/f1.jpg" width="100%" class="small-img small-img--active" alt="Product view 1">
+                </div>
+                <div class="small-img-col">
+                    <img src="IMAGE/products/f2.jpg" width="100%" class="small-img" alt="Product view 2">
+                </div> 
+                <div class="small-img-col">
+                    <img src="IMAGE/products/f3.jpg" width="100%" class="small-img" alt="Product view 3">
+                </div>
+                <div class="small-img-col">
+                    <img src="IMAGE/products/f4.jpg" width="100%" class="small-img" alt="Product view 4">
+                </div>
+            </div>
+        </div>
+        
+        <div class="single-pro-details">
+            <h6 id="prod-brand">Home / T-Shirts</h6>
+            <h4 id="prod-name">Cartoon Astronaut T-Shirt</h4>
+            <h2 id="prod-price">₦139,000</h2>
+            <select name="size" id="product-size" aria-label="Select size">
+                <option>Select Size</option>
+                <option value="XL">XL</option>
+                <option value="XXL">XXL</option>
+                <option value="Small">Small</option>
+                <option value="Large">Large</option>
+            </select> <button id="find-size-btn" style="background:none; border:none; color:#088178; text-decoration:underline; cursor:pointer; margin-left:10px; font-weight:600;"><i class="fa-solid fa-ruler"></i> Find My Size</button>
+            <input type="number" id="prod-qty" value="1" min="1" aria-label="Quantity">
+            <button class="normal" id="add-to-cart-btn">Add To Cart</button>
+            <h4>Product Details</h4>
+            <span id="prod-desc">The Gildan Ultra Cotton T-Shirt is made from a substantial 6.0 oz. per sq. yd. fabric constructed from 100% cotton, this classic fit preshrunk jersey knit provides unmatched comfort with each wear.</span>
+        </div>
+    </section>
+
+    <section id="product-reviews" class="section-p1 scroll-reveal">
+        <div class="reviews-header">
+            <h3>Customer Reviews</h3>
+            <div class="reviews-summary">
+                <div class="star">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+                </div>
+                <span>4.8 based on 124 reviews</span>
+            </div>
+            <button class="normal" id="write-review-btn">Write a Review</button>
+        </div>
+        <div class="reviews-container">
+            <div class="review-box">
+                <div class="review-head">
+                    <strong>Emily R.</strong>
+                    <div class="star">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                </div>
+                <p>Absolutely love this product! The quality is amazing and it fits perfectly. Definitely my new favorite.</p>
+                <small>Posted on June 15, 2026</small>
+            </div>
+            <div class="review-box">
+                <div class="review-head">
+                    <strong>Michael T.</strong>
+                    <div class="star">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
+                    </div>
+                </div>
+                <p>Great material, very breathable. Delivery was fast too. Will buy again in other colors!</p>
+                <small>Posted on May 22, 2026</small>
+            </div>
+        </div>
+    </section>
+
+    <section id="product-1" class="section-p1">
+        <h2 class="scroll-reveal">Featured Products</h2>
+        <p class="scroll-reveal">Summer Collection New Modern Design</p>
+        <div class="pro-container">
+            <div class="pro scroll-reveal" onclick="window.location.href='sproduct.html?id=n1'">
+                <img src="IMAGE/products/n1.jpg" alt="Fresh Drop Tee">
+                <div class="pro-overlay">
+                    <a href="sproduct.html?id=n1" class="pro-overlay-btn" title="Quick View" onclick="event.stopPropagation()"><i class="fa-regular fa-eye"></i></a>
+                    <button class="pro-overlay-btn" title="Wishlist" onclick="event.stopPropagation()"><i class="fa-regular fa-heart"></i></button>
+                </div>
+                <div class="des">
+                    <span>adidas</span>
+                    <h5>Fresh Drop Tee — Midnight</h5>
+                    <div class="star">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <h4>₦82,000</h4>
+                </div>
+                <a href="#" onclick="event.stopPropagation()"><i class="fa fa-shopping-cart"></i></a>
+            </div>
+            <div class="pro scroll-reveal" onclick="window.location.href='sproduct.html?id=n2'">
+                <img src="IMAGE/products/n2.jpg" alt="Cali Surf Cotton Tee">
+                <div class="pro-overlay">
+                    <a href="sproduct.html?id=n2" class="pro-overlay-btn" title="Quick View" onclick="event.stopPropagation()"><i class="fa-regular fa-eye"></i></a>
+                    <button class="pro-overlay-btn" title="Wishlist" onclick="event.stopPropagation()"><i class="fa-regular fa-heart"></i></button>
+                </div>
+                <div class="des">
+                    <span>adidas</span>
+                    <h5>Cali Surf Cotton Tee</h5>
+                    <div class="star">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                    </div>
+                    <h4>₦74,000</h4>
+                </div>
+                <a href="#" onclick="event.stopPropagation()"><i class="fa fa-shopping-cart"></i></a>
+            </div>
+            <div class="pro scroll-reveal" onclick="window.location.href='sproduct.html?id=n3'">
+                <img src="IMAGE/products/n3.jpg" alt="Tokyo Street Style Tee">
+                <div class="pro-overlay">
+                    <a href="sproduct.html?id=n3" class="pro-overlay-btn" title="Quick View" onclick="event.stopPropagation()"><i class="fa-regular fa-eye"></i></a>
+                    <button class="pro-overlay-btn" title="Wishlist" onclick="event.stopPropagation()"><i class="fa-regular fa-heart"></i></button>
+                </div>
+                <div class="des">
+                    <span>adidas</span>
+                    <h5>Tokyo Street Style Tee</h5>
+                    <div class="star">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                    </div>
+                    <h4>₦79,000</h4>
+                </div>
+                <a href="#" onclick="event.stopPropagation()"><i class="fa fa-shopping-cart"></i></a>
+            </div>
+            <div class="pro scroll-reveal" onclick="window.location.href='sproduct.html?id=n4'">
+                <img src="IMAGE/products/n4.jpg" alt="Urban Explorer Hoodie-Tee">
+                <div class="pro-overlay">
+                    <a href="sproduct.html?id=n4" class="pro-overlay-btn" title="Quick View" onclick="event.stopPropagation()"><i class="fa-regular fa-eye"></i></a>
+                    <button class="pro-overlay-btn" title="Wishlist" onclick="event.stopPropagation()"><i class="fa-regular fa-heart"></i></button>
+                </div>
+                <div class="des">
+                    <span>adidas</span>
+                    <h5>Urban Explorer Hoodie-Tee</h5>
+                    <div class="star">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <h4>₦95,000</h4>
+                </div>
+                <a href="#" onclick="event.stopPropagation()"><i class="fa fa-shopping-cart"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <section id="newsletter" class="section-p1 section-m1 scroll-reveal">
+        <div class="newstext">
+            <h4>Sign Up For Newsletters</h4>
+            <p>Get E-mail updates about our latest shop and <span>special offers.</span></p>
+        </div>
+        <div class="form">
+            <input type="email" id="newsletter-email" placeholder="Your email address" aria-label="Email for newsletter">
+            <button class="normal" id="newsletter-btn">Sign Up</button>
+        </div>
+    </section>
+
+    <footer class="section-p1">
+        <div class="col">
+            <img class="logo" src="IMAGE/logo (2).png" alt="Fashion Store Logo" width="200px">
+            <h4>Contact</h4>
+            <p><strong>Address:</strong> Adenike Area, LAUTECH Ogbomoso</p>
+            <p><strong>Phone:</strong> 08082598306 / 07016739128</p>
+            <p><strong>Hours:</strong> 10:00 - 18:00, Mon - Sat</p> 
+            <div class="follo">
+                <h4>Follow us</h4>
+                <div class="icon">
+                    <i class="fab fa-facebook-f" title="Facebook"></i>
+                    <i class="fab fa-twitter" title="Twitter"></i> 
+                    <i class="fab fa-instagram" title="Instagram"></i>
+                    <i class="fab fa-pinterest-p" title="Pinterest"></i>
+                    <i class="fab fa-youtube" title="YouTube"></i>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <h4>About</h4>
+            <a href="about.html">About us</a>
+            <a href="delivery.html">Delivery Information</a>
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="terms.html">Terms &amp; Conditions</a>
+            <a href="contact.html">Contact Us</a>
+        </div>
+        <div class="col">
+            <h4>My Account</h4>
+            <a href="Login.html">Sign In</a>
+            <a href="cart.html">View Cart</a>
+            <a href="wishlist.html">My Wishlist</a>
+            <a href="track-order.html">Track My Order</a>
+            <a href="help.html">Help</a>
+        </div>
+        <div class="col install">
+            <h4>Install App</h4>
+            <p>From App Store or Google Play</p>
+            <div class="row">
+                <img src="IMAGE/pay/app.jpg" alt="Download on App Store">
+                <img src="IMAGE/pay/play.jpg" alt="Get it on Google Play">
+            </div>
+            <p>Secured Payment Gateways</p>
+            <img src="IMAGE/pay/pay.png" alt="Accepted payment methods"> 
+        </div>
+        <div class="copyright">
+            <p>&copy; 2026, DammyGold — Fashion E-Commerce</p>
+        </div>
+    </footer>
+    
+    <script src="products.js"></script>
+    <script src="script.js"></script>
+    <script src="cart.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const newsletterInput = document.getElementById('newsletter-email');
+            const newsletterBtn   = document.getElementById('newsletter-btn');
+            if (newsletterInput && newsletterBtn) {
+                newsletterBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    validateNewsletter(newsletterInput, newsletterBtn);
+                });
+            }
+        });
+    </script>
+
+    <div id="size-guide-modal" class="custom-modal" style="display: none;">
+        <div class="custom-modal-content" style="max-width:400px;">
+            <span class="custom-modal-close" id="close-size-modal">&times;</span>
+            <h2 style="text-align:center;">Find My Size</h2>
+            <p style="text-align:center; color:#666; margin-bottom:20px;">Use the sliders below to find your perfect fit.</p>
+            
+            <div style="margin-bottom:20px;">
+                <label for="height-slider" style="display:flex; justify-content:space-between;">
+                    <span>Height</span>
+                    <span id="height-val">170 cm</span>
+                </label>
+                <input type="range" id="height-slider" min="140" max="220" value="170" style="width:100%; accent-color:#088178;">
+            </div>
+            
+            <div style="margin-bottom:30px;">
+                <label for="weight-slider" style="display:flex; justify-content:space-between;">
+                    <span>Weight</span>
+                    <span id="weight-val">70 kg</span>
+                </label>
+                <input type="range" id="weight-slider" min="40" max="150" value="70" style="width:100%; accent-color:#088178;">
+            </div>
+            
+            <div style="text-align:center; background:#f4f4f4; padding:20px; border-radius:8px; margin-bottom:20px;" id="size-result-box">
+                <p style="margin:0; font-size:14px; color:#555;">Recommended Size</p>
+                <h1 style="margin:10px 0 0; color:#088178; font-size:48px;" id="recommended-size">M</h1>
+            </div>
+            
+            <button id="apply-size-btn" class="normal" style="width:100%;">Apply Size</button>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const sizeBtn = document.getElementById('find-size-btn');
+            const modal = document.getElementById('size-guide-modal');
+            const closeBtn = document.getElementById('close-size-modal');
+            
+            if (!sizeBtn || !modal) return;
+            
+            sizeBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                modal.style.display = 'flex';
+                modal.querySelector('.custom-modal-content').style.animation = 'successPop 0.3s ease forwards';
+            });
+            
+            closeBtn.addEventListener('click', () => modal.style.display = 'none');
+            window.addEventListener('click', (e) => { if (e.target === modal) modal.style.display = 'none'; });
+            
+            const heightSlider = document.getElementById('height-slider');
+            const weightSlider = document.getElementById('weight-slider');
+            const heightVal = document.getElementById('height-val');
+            const weightVal = document.getElementById('weight-val');
+            const recSize = document.getElementById('recommended-size');
+            
+            function calculateSize() {
+                const h = parseInt(heightSlider.value);
+                const w = parseInt(weightSlider.value);
+                heightVal.textContent = h + ' cm';
+                weightVal.textContent = w + ' kg';
+                
+                let size = 'Small';
+                if (h > 185 || w > 95) size = 'XXL';
+                else if (h > 178 || w > 82) size = 'XL';
+                else if (h > 165 || w > 65) size = 'Large';
+                else if (h > 155 || w > 55) size = 'M'; 
+                
+            
+                let finalSize = 'Small';
+                if (h > 185 || w > 95) finalSize = 'XXL';
+                else if (h > 178 || w > 82) finalSize = 'XL';
+                else if (h > 165 || w > 65) finalSize = 'Large';
+                
+                recSize.textContent = finalSize;
+                
+                
+                recSize.style.transform = 'scale(1.2)';
+                setTimeout(() => recSize.style.transform = 'scale(1)', 200);
+            }
+            
+            heightSlider.addEventListener('input', calculateSize);
+            weightSlider.addEventListener('input', calculateSize);
+            
+            document.getElementById('apply-size-btn').addEventListener('click', () => {
+                const select = document.getElementById('product-size');
+                if (select) {
+                    select.value = recSize.textContent;
+                    modal.style.display = 'none';
+                    if(typeof showCartToast === 'function') showCartToast('Size applied successfully!', 'success');
+                }
+            });
+        });
+    </script>
+    
+</body>
+</html>

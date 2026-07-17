@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Track your order at DAMMYGOLD STORE. Enter your order number to see real-time delivery status.">
+    <title>Track My Order | DAMMYGOLD STORE</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        .track-wrapper {
+            max-width: 700px;
+            margin: 70px auto 80px;
+            padding: 0 20px;
+        }
+        .track-wrapper h1 {
+            font-size: 34px;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .track-wrapper > p {
+            text-align: center;
+            color: #666;
+            margin-bottom: 40px;
+        }
+        .track-form-card {
+            background: #fff;
+            border: 1px solid #eee;
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.07);
+        }
+        .track-form-card label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #333;
+        }
+        .track-form-card input {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1.5px solid #ddd;
+            border-radius: 8px;
+            font-size: 15px;
+            margin-bottom: 16px;
+            outline: none;
+            transition: 0.3s;
+        }
+        .track-form-card input:focus { border-color: #088178; }
+        .track-form-card button {
+            width: 100%;
+            padding: 14px;
+            background: #088178;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .track-form-card button:hover { background: #066b63; }
+        .track-result {
+            margin-top: 30px;
+            display: none;
+        }
+        .track-result.visible { display: block; }
+        .track-steps {
+            position: relative;
+            padding-left: 30px;
+            margin-top: 20px;
+        }
+        .track-steps::before {
+            content: '';
+            position: absolute;
+            left: 10px;
+            top: 0; bottom: 0;
+            width: 2px;
+            background: #e8e8e8;
+        }
+        .track-step {
+            position: relative;
+            margin-bottom: 28px;
+            padding-left: 20px;
+        }
+        .track-step .dot {
+            position: absolute;
+            left: -30px;
+            top: 4px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #ccc;
+            border: 3px solid #fff;
+            box-shadow: 0 0 0 2px #ccc;
+        }
+        .track-step.done .dot { background: #088178; box-shadow: 0 0 0 2px #088178; }
+        .track-step.active .dot { background: #f3b519; box-shadow: 0 0 0 2px #f3b519; animation: pulse 1.5s infinite; }
+        .track-step h4 { font-size: 15px; margin: 0 0 4px; }
+        .track-step p { font-size: 13px; color: #888; margin: 0; }
+        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.2); } }
+        .order-summary-box {
+            background: #f4f9f8;
+            border: 1px solid #c8e6e3;
+            border-radius: 10px;
+            padding: 16px 20px;
+            margin-bottom: 20px;
+        }
+        .order-summary-box p { margin: 6px 0; font-size: 14px; color: #444; }
+        .order-summary-box strong { color: #088178; }
+        body.dark-mode .track-form-card { background: #1e1e1e; border-color: #333; }
+        body.dark-mode .track-form-card label { color: #f1f1f1; }
+        body.dark-mode .track-form-card input { background: #2a2a2a; border-color: #444; color: #f1f1f1; }
+        body.dark-mode .order-summary-box { background: #1a2e2d; border-color: #144f4a; }
+        body.dark-mode .order-summary-box p { color: #b0b0b0; }
+        body.dark-mode .track-steps::before { background: #444; }
+        body.dark-mode .track-step h4 { color: #f1f1f1; }
+    </style>
+</head>
+<body>
+    <section id="header">
+        <a href="index.html"><img src="IMAGE/logo.png" class="logo" alt="DAMMYGOLD STORE Logo"></a>
+        <div>
+            <ul id="navbar">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li id="lg-bag">
+                    <a href="cart.html" class="cart-icon-wrapper">
+                        <i class="fa-solid fa-shopping-bag"></i>
+                        <span class="cart-badge">0</span>
+                    </a>
+                </li>
+                <a href="#" id="close"><i class="fa-solid fa-times"></i></a>
+            </ul>
+        </div>
+        <div id="mobile">
+            <a href="cart.html" class="cart-icon-wrapper">
+                <i class="fa-solid fa-shopping-bag"></i>
+                <span class="cart-badge">0</span>
+            </a>
+            <i id="bar" class="fa-solid fa-outdent"></i>
+        </div>
+    </section>
+
+    <section id="page-header" class="about-header">
+        <h2>#TrackOrder</h2>
+        <p>Stay updated on your delivery — real-time tracking at your fingertips.</p>
+    </section>
+
+    <div class="track-wrapper">
+        <h1>Track My Order</h1>
+        <p>Enter your order number and email address below to get the latest update on your delivery.</p>
+
+        <div class="track-form-card">
+            <label for="track-order-id">Order Number</label>
+            <input type="text" id="track-order-id" placeholder="e.g. DGS-20260101-1234" maxlength="30">
+
+            <label for="track-email">Email Address</label>
+            <input type="email" id="track-email" placeholder="The email used when ordering">
+
+            <button id="track-btn" onclick="trackOrder()">
+                <i class="fa-solid fa-magnifying-glass"></i> &nbsp; Track Order
+            </button>
+
+            <div class="track-result" id="track-result">
+                <div class="order-summary-box" id="order-summary"></div>
+                <h3 style="margin-bottom: 16px;">Delivery Progress</h3>
+                <div class="track-steps">
+                    <div class="track-step done" id="step-placed">
+                        <div class="dot"></div>
+                        <h4>Order Placed</h4>
+                        <p id="step-placed-date">—</p>
+                    </div>
+                    <div class="track-step done" id="step-confirmed">
+                        <div class="dot"></div>
+                        <h4>Order Confirmed & Packed</h4>
+                        <p id="step-confirmed-date">—</p>
+                    </div>
+                    <div class="track-step active" id="step-shipped">
+                        <div class="dot"></div>
+                        <h4>Dispatched for Delivery</h4>
+                        <p id="step-shipped-date">—</p>
+                    </div>
+                    <div class="track-step" id="step-delivered">
+                        <div class="dot"></div>
+                        <h4>Delivered</h4>
+                        <p>Estimated: <span id="step-delivered-date">—</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="section-p1">
+        <div class="col">
+            <img class="logo" src="IMAGE/logo.png" alt="DAMMYGOLD STORE">
+            <h4>Contact</h4>
+            <p><strong>Address:</strong> 562 Wellington Road, Street 32, Lagos</p>
+            <p><strong>Phone:</strong> +234 801 234 5678</p>
+            <p><strong>Hours:</strong> 10:00 - 18:00, Mon - Sat</p>
+            <div class="follo">
+                <h4>Follow us</h4>
+                <div class="icon">
+                    <i class="fab fa-facebook-f"></i><i class="fab fa-twitter"></i>
+                    <i class="fab fa-instagram"></i><i class="fab fa-pinterest-p"></i>
+                    <i class="fab fa-youtube"></i>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <h4>About</h4>
+            <a href="about.html">About us</a>
+            <a href="delivery.html">Delivery Information</a>
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="terms.html">Terms &amp; Conditions</a>
+            <a href="contact.html">Contact Us</a>
+        </div>
+        <div class="col">
+            <h4>My Account</h4>
+            <a href="Login.html">Sign In</a>
+            <a href="cart.html">View Cart</a>
+            <a href="wishlist.html">My Wishlist</a>
+            <a href="track-order.html">Track My Order</a>
+            <a href="help.html">Help</a>
+        </div>
+        <div class="col install">
+            <h4>Install App</h4>
+            <p>From App Store or Google Play</p>
+            <div class="row">
+                <img src="IMAGE/pay/app.jpg" alt="App Store">
+                <img src="IMAGE/pay/play.jpg" alt="Google Play">
+            </div>
+            <p>Secured Payment Gateways</p>
+            <img src="IMAGE/pay/pay.png" alt="Payment methods">
+        </div>
+        <div class="copyright">
+            <p>&copy; 2026, DAMMYGOLD STORE — Fashion E-Commerce</p>
+        </div>
+    </footer>
+    <script src="products.js"></script>
+    <script src="script.js"></script>
+    <script src="cart.js"></script>
+    <script>
+    function trackOrder() {
+        const orderId = document.getElementById('track-order-id').value.trim();
+        const email = document.getElementById('track-email').value.trim();
+        const result = document.getElementById('track-result');
+
+        if (!orderId || !email) {
+            if (typeof showCartToast === 'function') showCartToast('Please fill in all fields.', 'error');
+            else alert('Please fill in all fields.');
+            return;
+        }
+
+        // Demo tracking data
+        const now = new Date();
+        const placed = new Date(now - 3 * 24 * 60 * 60 * 1000);
+        const confirmed = new Date(now - 2 * 24 * 60 * 60 * 1000);
+        const shipped = new Date(now - 1 * 24 * 60 * 60 * 1000);
+        const estimated = new Date(now.getTime() + 2 * 24 * 60 * 60 * 1000);
+
+        const fmt = d => d.toLocaleDateString('en-NG', { weekday: 'short', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
+
+        document.getElementById('order-summary').innerHTML = `
+            <p><strong>Order Number:</strong> ${orderId}</p>
+            <p><strong>Email:</strong> ${email}</p>
+            <p><strong>Status:</strong> <strong style="color:#f3b519;">In Transit</strong></p>
+            <p><strong>Carrier:</strong> DammyGold Express Logistics</p>
+        `;
+        document.getElementById('step-placed-date').textContent = fmt(placed);
+        document.getElementById('step-confirmed-date').textContent = fmt(confirmed);
+        document.getElementById('step-shipped-date').textContent = fmt(shipped);
+        document.getElementById('step-delivered-date').textContent = fmt(estimated);
+
+        result.classList.add('visible');
+        result.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    </script>
+</body>
+</html>

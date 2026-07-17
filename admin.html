@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Fashion E-Commerce — Admin Control Panel">
+    <title>ADMIN | Fashion Store Control Panel</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+    <!-- ══════════════════════════════════════════
+         ADMIN LOGIN SCREEN
+    ══════════════════════════════════════════ -->
+    <div id="admin-login-screen">
+        <div class="admin-login-card">
+            <div class="admin-login-logo">
+                <i class="fa-solid fa-shield-halved"></i>
+            </div>
+            <h1>Admin Panel</h1>
+            <p>Fashion Store Control Center</p>
+            <div class="admin-login-form">
+                <div class="admin-input-group">
+                    <i class="fa-solid fa-user"></i>
+                    <input type="text" id="adminUser" placeholder="Admin username" autocomplete="off">
+                </div>
+                <div class="admin-input-group">
+                    <i class="fa-solid fa-lock"></i>
+                    <input type="password" id="adminPass" placeholder="Admin password">
+                    <i class="fa-regular fa-eye admin-eye" id="adminEye"></i>
+                </div>
+                <div class="admin-login-error" id="adminLoginError"></div>
+                <button id="adminLoginBtn">
+                    <i class="fa-solid fa-right-to-bracket"></i> Access Admin Panel
+                </button>
+
+                <!-- ── Credentials Hint ── -->
+                <div style="margin-top:16px;padding:12px 16px;background:rgba(8,129,120,0.08);
+                            border:1px dashed rgba(8,129,120,0.35);border-radius:10px;text-align:left;">
+                    <p style="font-size:12px;font-weight:700;color:#04b49c;margin-bottom:6px;letter-spacing:.5px;">
+                        <i class="fa-solid fa-circle-info" style="margin-right:5px;"></i> DEFAULT CREDENTIALS
+                    </p>
+                    <p style="font-size:13px;color:#c9d1d9;margin:2px 0;">
+                        <span style="color:#8b949e;">Username:</span>
+                        <strong style="color:#04b49c;margin-left:6px;letter-spacing:.5px;">admin</strong>
+                    </p>
+                    <p style="font-size:13px;color:#c9d1d9;margin:2px 0;">
+                        <span style="color:#8b949e;">Password:</span>
+                        <strong style="color:#04b49c;margin-left:6px;letter-spacing:.5px;">admin123</strong>
+                    </p>
+                </div>
+
+                <a href="index.html" class="admin-back-link">← Back to Store</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════
+         ADMIN DASHBOARD (hidden until login)
+    ══════════════════════════════════════════ -->
+    <div id="admin-dashboard" style="display:none;">
+
+        <!-- Sidebar -->
+        <aside class="admin-sidebar" id="adminSidebar">
+            <div class="admin-sidebar-header">
+                <div class="admin-brand">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    <span>Admin Panel</span>
+                </div>
+                <button class="admin-sidebar-close" id="adminSidebarClose">
+                    <i class="fa-solid fa-times"></i>
+                </button>
+            </div>
+            <div class="admin-sidebar-badge">
+                <i class="fa-solid fa-circle-check"></i> Logged in as Admin
+            </div>
+            <nav class="admin-nav">
+                <a href="#" class="admin-nav-link active" data-panel="overview">
+                    <i class="fa-solid fa-gauge-high"></i><span>Store Overview</span>
+                </a>
+                <a href="#" class="admin-nav-link" data-panel="users">
+                    <i class="fa-solid fa-users"></i><span>User Management</span>
+                    <span class="admin-nav-badge" id="userCountBadge">0</span>
+                </a>
+                <a href="#" class="admin-nav-link" data-panel="orders">
+                    <i class="fa-solid fa-box-archive"></i><span>All Orders</span>
+                    <span class="admin-nav-badge" id="orderCountBadge">0</span>
+                </a>
+                <a href="#" class="admin-nav-link" data-panel="subscribers">
+                    <i class="fa-solid fa-envelope-open-text"></i><span>Newsletter</span>
+                    <span class="admin-nav-badge sub-badge" id="subCountBadge">0</span>
+                </a>
+                <a href="#" class="admin-nav-link" data-panel="activity">
+                    <i class="fa-solid fa-bolt"></i><span>Activity Feed</span>
+                </a>
+                <a href="#" class="admin-nav-link" data-panel="inventory">
+                    <i class="fa-solid fa-shirt"></i><span>Product Inventory</span>
+                </a>
+            </nav>
+            <div class="admin-sidebar-footer">
+                <a href="index.html" class="admin-footer-link">
+                    <i class="fa-solid fa-store"></i> View Store
+                </a>
+                <button class="admin-footer-link admin-logout-btn" id="adminLogoutBtn">
+                    <i class="fa-solid fa-right-from-bracket"></i> Logout
+                </button>
+            </div>
+        </aside>
+        <div class="admin-overlay" id="adminOverlay"></div>
+
+        <!-- Main Content -->
+        <div class="admin-main" id="adminMain">
+
+            <!-- Topbar -->
+            <header class="admin-topbar">
+                <div class="admin-topbar-left">
+                    <button class="admin-hamburger" id="adminHamburger">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                    <div class="admin-breadcrumb">
+                        <i class="fa-solid fa-shield-halved"></i>
+                        <span>Admin</span>
+                        <i class="fa-solid fa-chevron-right"></i>
+                        <span id="adminBreadcrumb">Store Overview</span>
+                    </div>
+                </div>
+                <div class="admin-topbar-right">
+                    <div class="admin-live-badge">
+                        <span class="live-dot"></span> Live Data
+                    </div>
+                    <div class="admin-topbar-time" id="adminClock"></div>
+                    <button class="admin-refresh-btn" id="adminRefreshBtn" title="Refresh Data">
+                        <i class="fa-solid fa-rotate"></i>
+                    </button>
+                </div>
+            </header>
+
+            <!-- ── PANEL: Store Overview ─────────────────────── -->
+            <section class="admin-panel active" id="panel-overview">
+                <div class="admin-section-header">
+                    <h1>Store Overview</h1>
+                    <p id="overviewDate">Loading...</p>
+                </div>
+
+                <!-- KPI Cards -->
+                <div class="admin-kpi-grid">
+                    <div class="admin-kpi-card" style="--kpi-color:#088178;">
+                        <div class="kpi-icon"><i class="fa-solid fa-users"></i></div>
+                        <div class="kpi-info">
+                            <h3 id="kpi-users">0</h3>
+                            <p>Registered Users</p>
+                        </div>
+                        <div class="kpi-trend">
+                            <i class="fa-solid fa-arrow-trend-up"></i>
+                        </div>
+                    </div>
+                    <div class="admin-kpi-card" style="--kpi-color:#7b2d8b;">
+                        <div class="kpi-icon"><i class="fa-solid fa-naira-sign"></i></div>
+                        <div class="kpi-info">
+                            <h3 id="kpi-revenue">₦0</h3>
+                            <p>Total Revenue</p>
+                        </div>
+                        <div class="kpi-trend">
+                            <i class="fa-solid fa-arrow-trend-up"></i>
+                        </div>
+                    </div>
+                    <div class="admin-kpi-card" style="--kpi-color:#e63946;">
+                        <div class="kpi-icon"><i class="fa-solid fa-box-archive"></i></div>
+                        <div class="kpi-info">
+                            <h3 id="kpi-orders">0</h3>
+                            <p>Total Orders</p>
+                        </div>
+                        <div class="kpi-trend">
+                            <i class="fa-solid fa-arrow-trend-up"></i>
+                        </div>
+                    </div>
+                    <div class="admin-kpi-card" style="--kpi-color:#f4a261;">
+                        <div class="kpi-icon"><i class="fa-solid fa-envelope-open-text"></i></div>
+                        <div class="kpi-info">
+                            <h3 id="kpi-subscribers">0</h3>
+                            <p>Newsletter Subscribers</p>
+                        </div>
+                        <div class="kpi-trend">
+                            <i class="fa-solid fa-arrow-trend-up"></i>
+                        </div>
+                    </div>
+                    <div class="admin-kpi-card" style="--kpi-color:#2a9d8f;">
+                        <div class="kpi-icon"><i class="fa-solid fa-truck"></i></div>
+                        <div class="kpi-info">
+                            <h3 id="kpi-processing">0</h3>
+                            <p>Orders Processing</p>
+                        </div>
+                    </div>
+                    <div class="admin-kpi-card" style="--kpi-color:#e9c46a;">
+                        <div class="kpi-icon"><i class="fa-solid fa-heart"></i></div>
+                        <div class="kpi-info">
+                            <h3 id="kpi-wishlists">0</h3>
+                            <p>Wishlisted Items</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Overview Grid: Recent Orders + Top Users -->
+                <div class="admin-overview-grid">
+                    <div class="admin-card">
+                        <div class="admin-card-header">
+                            <h4><i class="fa-solid fa-clock-rotate-left"></i> Recent Orders</h4>
+                            <a href="#" class="admin-card-link" data-panel="orders">View All</a>
+                        </div>
+                        <div id="overviewRecentOrders"></div>
+                    </div>
+                    <div class="admin-card">
+                        <div class="admin-card-header">
+                            <h4><i class="fa-solid fa-users"></i> Recent Users</h4>
+                            <a href="#" class="admin-card-link" data-panel="users">View All</a>
+                        </div>
+                        <div id="overviewRecentUsers"></div>
+                    </div>
+                </div>
+
+                <!-- Order Status Breakdown -->
+                <div class="admin-card">
+                    <div class="admin-card-header">
+                        <h4><i class="fa-solid fa-chart-bar"></i> Order Status Breakdown</h4>
+                    </div>
+                    <div class="admin-status-bars" id="statusBreakdown"></div>
+                </div>
+            </section>
+
+            <!-- ── PANEL: User Management ───────────────────── -->
+            <section class="admin-panel" id="panel-users">
+                <div class="admin-section-header">
+                    <h1>User Management</h1>
+                    <p>View, inspect, and manage all registered accounts.</p>
+                </div>
+                <div class="admin-card">
+                    <div class="admin-card-header">
+                        <h4><i class="fa-solid fa-users"></i> All Users (<span id="usersTotal">0</span>)</h4>
+                        <div class="admin-search-box">
+                            <i class="fa-solid fa-search"></i>
+                            <input type="text" id="userSearch" placeholder="Search by name or email...">
+                        </div>
+                    </div>
+                    <div class="admin-table-wrap">
+                        <table class="admin-table" id="usersTable">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Joined</th>
+                                    <th>Orders</th>
+                                    <th>Wishlist</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="usersTableBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ── PANEL: All Orders ────────────────────────── -->
+            <section class="admin-panel" id="panel-orders">
+                <div class="admin-section-header">
+                    <h1>Order Management</h1>
+                    <p>Track, update, and manage every order placed on the store.</p>
+                </div>
+                <div class="admin-card">
+                    <div class="admin-card-header">
+                        <h4><i class="fa-solid fa-box-archive"></i> All Orders (<span id="ordersTotal">0</span>)</h4>
+                        <div class="admin-filters">
+                            <select id="orderStatusFilter">
+                                <option value="all">All Statuses</option>
+                                <option value="processing">Processing</option>
+                                <option value="transit">In Transit</option>
+                                <option value="delivered">Delivered</option>
+                                <option value="cancelled">Cancelled</option>
+                            </select>
+                            <div class="admin-search-box">
+                                <i class="fa-solid fa-search"></i>
+                                <input type="text" id="orderSearch" placeholder="Search orders...">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="admin-table-wrap">
+                        <table class="admin-table" id="ordersTable">
+                            <thead>
+                                <tr>
+                                    <th>Order ID</th>
+                                    <th>Product</th>
+                                    <th>Date</th>
+                                    <th>Amount</th>
+                                    <th>Status</th>
+                                    <th>Update Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="ordersTableBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ── PANEL: Newsletter Subscribers ───────────── -->
+            <section class="admin-panel" id="panel-subscribers">
+                <div class="admin-section-header">
+                    <h1>Newsletter Subscribers</h1>
+                    <p>All users who signed up for your newsletter.</p>
+                </div>
+                <div class="admin-card">
+                    <div class="admin-card-header">
+                        <h4><i class="fa-solid fa-envelope-open-text"></i> Subscribers (<span id="subsTotal">0</span>)</h4>
+                        <button class="admin-export-btn" id="exportSubsBtn">
+                            <i class="fa-solid fa-download"></i> Export CSV
+                        </button>
+                    </div>
+                    <div class="admin-table-wrap">
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Email</th>
+                                    <th>Subscribed On</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="subsTableBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ── PANEL: Activity Feed ─────────────────────── -->
+            <section class="admin-panel" id="panel-activity">
+                <div class="admin-section-header">
+                    <h1>Activity Feed</h1>
+                    <p>Real-time log of all user interactions on the store.</p>
+                </div>
+                <div class="admin-card">
+                    <div class="admin-card-header">
+                        <h4><i class="fa-solid fa-bolt"></i> User Activity</h4>
+                        <button class="admin-export-btn danger-btn" id="clearActivityBtn">
+                            <i class="fa-solid fa-trash"></i> Clear All
+                        </button>
+                    </div>
+                    <div class="admin-activity-list" id="adminActivityList"></div>
+                </div>
+            </section>
+
+            <!-- ── PANEL: Product Inventory ─────────────────── -->
+            <section class="admin-panel" id="panel-inventory">
+                <div class="admin-section-header">
+                    <h1>Product Inventory</h1>
+                    <p>Overview of all 16 products in the catalogue.</p>
+                </div>
+                <div class="admin-inventory-grid" id="inventoryGrid"></div>
+            </section>
+
+        </div><!-- end admin-main -->
+    </div><!-- end admin-dashboard -->
+
+    <!-- ── User Detail Modal ─────────────────────────── -->
+    <div class="admin-modal-overlay" id="userDetailModal">
+        <div class="admin-modal">
+            <button class="admin-modal-close" id="closeUserModal"><i class="fa-solid fa-times"></i></button>
+            <h4 id="userModalTitle">User Details</h4>
+            <div id="userModalContent"></div>
+        </div>
+    </div>
+
+    <script src="products.js"></script>
+    <script src="admin.js"></script>
+</body>
+</html>

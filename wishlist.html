@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Fashion E-Commerce — View your shopping cart.">
+    <title>My Wishlist - Fashion E-Commerce</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- Back to Top Button -->
+    <button id="back-to-top" aria-label="Back to top">
+        <i class="fa-solid fa-chevron-up"></i>
+    </button>
+
+    <section id="header">
+        <a href="index.html"><img src="IMAGE/logo.png" class="logo" alt="Fashion Store Logo"></a>
+        <div>
+            <ul id="navbar">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li id="lg-bag">
+                    <a class="active cart-icon-wrapper" href="cart.html" aria-label="Shopping cart">
+                        <i class="fa-solid fa-shopping-bag"></i>
+                        <span class="cart-badge" aria-live="polite">0</span>
+                    </a>
+                </li>
+                <a href="Signup.html"><button>Let's Get Started</button></a>
+                <a href="#" id="close" aria-label="Close menu"><i class="fa-solid fa-times"></i></a>
+            </ul>
+        </div>
+        <div id="mobile">
+            <a href="cart.html" class="cart-icon-wrapper" aria-label="Shopping cart">
+                <i class="fa-solid fa-shopping-bag"></i>
+                <span class="cart-badge" aria-live="polite">0</span>
+            </a>
+            <i id="bar" class="fa-solid fa-outdent" aria-label="Open menu"></i>
+        </div>
+    </section>
+
+    <section id="page-header" style="background-image: url(IMAGE/about/banner.png);">
+        <h2>#my_cart</h2>
+        <p>Review your items and proceed to checkout.</p>
+    </section>
+
+    <section id="wishlist" class="section-p1 scroll-reveal">
+        <table width="100%">
+            <thead>
+                <tr>
+                    <td>Remove</td>
+                    <td>Image</td>
+                    <td>Product</td>
+                    <td>Price</td>
+                    <td>Quantity</td>
+                    <td>Subtotal</td>
+                </tr>
+            </thead>
+            <tbody id="wishlist-body">
+                <!-- Cart items rendered by cart.js -->
+            </tbody>
+        </table>
+        
+        <div id="wishlist-empty" style="display: none;">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <h3>Your wishlist is empty</h3>
+            <p>Save items you love to your wishlist to review them later.</p>
+            <a href="shop.html">Start Shopping</a>
+        </div>
+    </section>
+
+    
+
+    <footer class="section-p1 scroll-reveal">
+        <div class="col">
+            <img class="logo" src="IMAGE/logo.png" alt="Fashion Store Logo">
+            <h4>Contact</h4>
+            <p><strong>Address:</strong> 562 Wellington Road, Street 32, San Francisco</p>
+            <p><strong>Phone:</strong> +01 2222 365 / (+91) 01 2345 6789</p>
+            <p><strong>Hours:</strong> 10:00 - 18:00, Mon - Sat</p>
+            <div class="follo">
+                <h4>Follow us</h4>
+                <div class="icon">
+                    <i class="fab fa-facebook-f" title="Facebook"></i>
+                    <i class="fab fa-twitter" title="Twitter"></i>
+                    <i class="fab fa-instagram" title="Instagram"></i>
+                    <i class="fab fa-pinterest-p" title="Pinterest"></i>
+                    <i class="fab fa-youtube" title="YouTube"></i>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <h4>About</h4>
+            <a href="about.html">About us</a>
+            <a href="delivery.html">Delivery Information</a>
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="terms.html">Terms &amp; Conditions</a>
+            <a href="contact.html">Contact Us</a>
+        </div>
+        <div class="col">
+            <h4>My Account</h4>
+            <a href="Login.html">Sign In</a>
+            <a href="cart.html">View Cart</a>
+            <a href="wishlist.html">My Wishlist</a>
+            <a href="track-order.html">Track My Order</a>
+            <a href="help.html">Help</a>
+        </div>
+        <div class="col install">
+            <h4>Install App</h4>
+            <p>From App Store or Google Play</p>
+            <div class="row">
+                <img src="IMAGE/pay/app.jpg" alt="Download on App Store">
+                <img src="IMAGE/pay/play.jpg" alt="Get it on Google Play">
+            </div>
+            <p>Secured Payment Gateways</p>
+            <img src="IMAGE/pay/pay.png" alt="Accepted payment methods">
+        </div>
+        <div class="copyright">
+            <p>&copy; 2026, DammyGold — Fashion E-Commerce</p>
+        </div>
+    </footer>
+
+    <script src="products.js"></script>
+    <script src="script.js"></script>
+    <script src="wishlist.js"></script>
+    <script src="cart.js"></script>
+</body>
+
+</html>

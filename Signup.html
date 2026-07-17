@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Create your Fashion E-Commerce account and start shopping the latest trends.">
+    <title>FASHION | CREATE ACCOUNT</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <link rel="stylesheet" href="Signup.css">
+</head>
+<body>
+    <div class="container">
+        <div class="image-section">
+            <div class="blur-circle big"></div>
+            <div class="blur-circle small"></div>
+            <h2><img src="IMAGE/logo (2).png" alt="Fashion Store Logo"></h2>
+        </div>
+        <div class="form-section">
+            <div class="logo">
+                <a href="index.html"><img src="IMAGE/logo (2).png" alt="Fashion Store Logo" width="250px"></a>
+            </div>
+            <h1>Create Account</h1>
+            <p>Enter to get access to creativity with DAMMYGOLD STORE</p>
+            <div class="form">
+                <div class="name-row">
+                    <div class="input-box">
+                        <label>First Name</label>
+                        <input type="text" placeholder="First name" id="fName">
+                        <span class="field-error" id="fNameErr"></span>
+                    </div>
+                    <div class="input-box">
+                        <label>Last Name</label>
+                        <input type="text" placeholder="Last name" id="lName">
+                        <span class="field-error" id="lNameErr"></span>
+                    </div>
+                </div>
+                <div class="input-box">
+                    <label>Email</label>
+                    <input type="email" placeholder="Email Address" id="mail">
+                    <span class="field-error" id="mailErr"></span>
+                </div>
+                <div class="input-box password-box">
+                    <label>Password</label>
+                    <div class="password-input">
+                        <input type="password" placeholder="Password (min. 6 characters)" id="password">
+                        <i class="fa-regular fa-eye" id="signupEye"></i>
+                    </div>
+                    <span class="field-error" id="passErr"></span>
+                    <div class="password-strength" id="strengthBar" style="display:none;">
+                        <div class="strength-fill" id="strengthFill"></div>
+                    </div>
+                    <span class="strength-label" id="strengthLabel"></span>
+                </div>
+                <button id="createAccount" type="submit">Create Account</button>
+            </div>
+            <div class="signin">
+                Already have an account?
+                <a href="Login.html">Login</a>
+            </div>
+            <div class="divider">
+                <span></span>
+                <p>OR</p>
+                <span></span>
+            </div>
+            <div class="social-icons">
+                <button title="Google"><i class="fa-brands fa-google"></i></button>
+                <button title="Apple"><i class="fa-brands fa-apple"></i></button>
+                <button title="Facebook"><i class="fa-brands fa-facebook-f"></i></button>
+                <button title="Twitter"><i class="fa-brands fa-twitter"></i></button>
+            </div>
+        </div>
+    </div>
+
+<style>
+.field-error {
+    display: block;
+    font-size: 12px;
+    color: #e63946;
+    margin-top: 4px;
+    min-height: 16px;
+    font-weight: 500;
+}
+.input-box input.input-invalid {
+    border-color: #e63946 !important;
+}
+.password-strength {
+    height: 4px;
+    background: #e0e0e0;
+    border-radius: 4px;
+    margin-top: 8px;
+    overflow: hidden;
+}
+.strength-fill {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 0.3s ease, background 0.3s ease;
+    width: 0%;
+}
+.strength-label {
+    font-size: 11px;
+    font-weight: 600;
+    margin-top: 3px;
+    display: block;
+}
+</style>
+
+<!-- Toastify loaded BEFORE inline script -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+<script>
+    /* ── Password Eye Toggle ── */
+    const signupEye   = document.getElementById('signupEye');
+    const passwordInput = document.getElementById('password');
+
+    signupEye.addEventListener('click', () => {
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+            signupEye.classList.replace('fa-eye', 'fa-eye-slash');
+        } else {
+            passwordInput.type = 'password';
+            signupEye.classList.replace('fa-eye-slash', 'fa-eye');
+        }
+    });
+
+    /* ── Password Strength Meter ── */
+    passwordInput.addEventListener('input', () => {
+        const val = passwordInput.value;
+        const bar  = document.getElementById('strengthBar');
+        const fill = document.getElementById('strengthFill');
+        const lbl  = document.getElementById('strengthLabel');
+
+        if (!val) { bar.style.display = 'none'; lbl.textContent = ''; return; }
+        bar.style.display = 'block';
+
+        let score = 0;
+        if (val.length >= 6)  score++;
+        if (val.length >= 10) score++;
+        if (/[A-Z]/.test(val)) score++;
+        if (/[0-9]/.test(val)) score++;
+        if (/[^A-Za-z0-9]/.test(val)) score++;
+
+        const levels = [
+            { w: '20%',  bg: '#e63946', label: 'Very Weak' },
+            { w: '40%',  bg: '#f4a261', label: 'Weak' },
+            { w: '60%',  bg: '#e9c46a', label: 'Fair' },
+            { w: '80%',  bg: '#2a9d8f', label: 'Strong' },
+            { w: '100%', bg: '#088178', label: '🔒 Very Strong' },
+        ];
+        const level = levels[Math.min(score - 1, 4)] || levels[0];
+        fill.style.width      = level.w;
+        fill.style.background = level.bg;
+        lbl.textContent       = level.label;
+        lbl.style.color       = level.bg;
+    });
+
+    /* ── Helper: clear errors ── */
+    function clearErrors() {
+        ['fName','lName','mail','password'].forEach(id => {
+            const el = document.getElementById(id);
+            const err = document.getElementById(id === 'mail' ? 'mailErr' : id === 'password' ? 'passErr' : id + 'Err');
+            if (el)  el.classList.remove('input-invalid');
+            if (err) err.textContent = '';
+        });
+    }
+
+    function setError(fieldId, errId, msg) {
+        const el  = document.getElementById(fieldId);
+        const err = document.getElementById(errId);
+        if (el)  el.classList.add('input-invalid');
+        if (err) err.textContent = msg;
+    }
+
+    /* ── Signup Logic ── */
+    const userDetails = JSON.parse(localStorage.getItem('keyDetails')) || [];
+    const signUp = document.getElementById('createAccount');
+
+    signUp.addEventListener('click', () => {
+        clearErrors();
+        const f_name   = document.getElementById('fName').value.trim();
+        const l_name   = document.getElementById('lName').value.trim();
+        const email    = document.getElementById('mail').value.trim();
+        const password = document.getElementById('password').value.trim();
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        let hasError = false;
+
+        if (!f_name) { setError('fName', 'fNameErr', 'First name is required.'); hasError = true; }
+        if (!l_name) { setError('lName', 'lNameErr', 'Last name is required.');  hasError = true; }
+        if (!email)  { setError('mail',  'mailErr',  'Email is required.');       hasError = true; }
+        else if (!emailRegex.test(email)) { setError('mail', 'mailErr', 'Please enter a valid email address.'); hasError = true; }
+        if (!password) { setError('password', 'passErr', 'Password is required.'); hasError = true; }
+        else if (password.length < 6) { setError('password', 'passErr', 'Password must be at least 6 characters.'); hasError = true; }
+
+        if (hasError) {
+            Toastify({
+                text: 'Please fill in all the fields.',
+                duration: 3000,
+                style: { background: 'linear-gradient(to right, #1a1a1a, #c0392b)', maxWidth: '100%' }
+            }).showToast();
+            return;
+        }
+
+        // Check if email already registered
+        const existing = userDetails.find(u => u.email === email);
+        if (existing) {
+            setError('mail', 'mailErr', 'This email is already registered.');
+            Toastify({
+                text: 'Account with this email already exists.',
+                duration: 3000,
+                style: { background: 'linear-gradient(to right, #1a1a1a, #c0392b)', maxWidth: '100%' }
+            }).showToast();
+            return;
+        }
+
+        const savedUser = { f_name, l_name, email, password, joinDate: new Date().toISOString() };
+        userDetails.push(savedUser);
+        localStorage.setItem('keyDetails', JSON.stringify(userDetails));
+
+        signUp.innerHTML = `
+            <span style="display:flex;align-items:center;justify-content:center;gap:10px;">
+                <span style="width:18px;height:18px;border:3px solid rgba(255,255,255,0.3);
+                             border-top-color:#fff;border-radius:50%;
+                             animation:spin 0.7s linear infinite;display:inline-block;"></span>
+                Creating account...
+            </span>`;
+        signUp.disabled = true;
+
+        Toastify({
+            text: '🎉 Account created! Redirecting to login...',
+            duration: 3000,
+            style: { background: 'linear-gradient(to right, #088178, #04b49c)', maxWidth: '100%' }
+        }).showToast();
+
+        setTimeout(() => { window.location.href = 'Login.html'; }, 2800);
+    });
+</script>
+<style>
+@keyframes spin { to { transform: rotate(360deg); } }
+</style>
+</body>
+</html>

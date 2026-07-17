@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FASHION | DASHBOARD</title>
+    <meta name="description" content="Manage your orders, wishlist, profile and account settings on your Fashion E-Commerce dashboard.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+
+<body>
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <a href="index.html" class="sidebar-logo">
+                <img src="IMAGE/logo (2).png" alt="DAMMYGOLD STORE Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                <span class="logo-fallback"><i class="fa-solid fa-shirt"></i> DAMMYGOLD STORE</span>
+            </a>
+            <button class="sidebar-close" id="sidebarClose" aria-label="Close sidebar">
+                <i class="fa-solid fa-times"></i>
+            </button>
+        </div>
+        <div class="sidebar-user">
+            <div class="user-avatar" id="sidebarAvatar">
+                <span id="avatarInitials">JD</span>
+            </div>
+            <div class="user-info">
+                <h6 id="sidebarUserName">John Doe</h6>
+                <span id="sidebarUserEmail">john@example.com</span>
+            </div>
+        </div>
+        <nav class="sidebar-nav">
+            <ul>
+                <li>
+                    <a href="#" class="nav-link active" data-section="overview" id="nav-overview">
+                        <i class="fa-solid fa-gauge-high"></i>
+                        <span>Overview</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="nav-link" data-section="orders" id="nav-orders">
+                        <i class="fa-solid fa-box"></i>
+                        <span>My Orders</span>
+                        <span class="nav-badge" id="ordersBadge" style="display:none;">0</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="nav-link" data-section="wishlist" id="nav-wishlist">
+                        <i class="fa-solid fa-heart"></i>
+                        <span>Wishlist</span>
+                        <span class="nav-badge wishlist-badge" id="wishlistBadge" style="display:none;">0</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="nav-link" data-section="addresses" id="nav-addresses">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <span>Addresses</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="nav-link" data-section="payments" id="nav-payments">
+                        <i class="fa-solid fa-credit-card"></i>
+                        <span>Payment Methods</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="nav-link" data-section="notifications" id="nav-notifications">
+                        <i class="fa-solid fa-bell"></i>
+                        <span>Notifications</span>
+                        <span class="nav-badge pulse-badge" id="notifBadge">2</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="nav-link" data-section="profile" id="nav-profile">
+                        <i class="fa-solid fa-user-pen"></i>
+                        <span>Edit Profile</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="nav-link" data-section="settings" id="nav-settings">
+                        <i class="fa-solid fa-gear"></i>
+                        <span>Settings</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <div class="sidebar-footer">
+            <a href="index.html" class="sidebar-footer-link">
+                <i class="fa-solid fa-store"></i>
+                <span>Back to Shop</span>
+            </a>
+            <a href="#" class="sidebar-footer-link logout-link" id="logoutBtn">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <span>Logout</span>
+            </a>
+        </div>
+    </aside>
+    <div class="overlay" id="overlay"></div>
+    <div class="main-content" id="mainContent">
+        <header class="topbar">
+            <div class="topbar-left">
+                <button class="hamburger" id="hamburger" aria-label="Toggle sidebar">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+                <div class="breadcrumb">
+                    <span>Dashboard</span>
+                    <i class="fa-solid fa-chevron-right"></i>
+                    <span id="breadcrumbSection">Overview</span>
+                </div>
+            </div>
+            <div class="topbar-right">
+                <div class="topbar-search">
+                    <i class="fa-solid fa-search"></i>
+                    <input type="text" placeholder="Search orders, products..." id="globalSearch">
+                </div>
+                <a href="cart.html" class="topbar-icon" title="Cart">
+                    <i class="fa-solid fa-shopping-bag"></i>
+                    <span class="icon-badge" id="topbarCartBadge" style="display:none;">0</span>
+                </a>
+                <button class="topbar-icon notif-btn" id="notifBtn" title="Notifications">
+                    <i class="fa-solid fa-bell"></i>
+                    <span class="icon-badge pulse" id="topbarNotifBadge" style="display:none;">0</span>
+                </button>
+                <div class="topbar-user" id="topbarUser">
+                    <div class="topbar-avatar" id="topbarAvatar">JD</div>
+                    <span id="topbarUserName">John D.</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+            </div>
+        </header>
+        <div class="notif-dropdown" id="notifDropdown">
+            <div class="notif-header">
+                <h6>Notifications</h6>
+                <button id="markAllRead">Mark all read</button>
+            </div>
+            <div class="notif-list">
+                <div class="notif-item unread">
+                    <div class="notif-icon green"><i class="fa-solid fa-check"></i></div>
+                    <div>
+                        <p>Your order <strong>#ORD-0023</strong> has been delivered!</p>
+                        <span>2 hours ago</span>
+                    </div>
+                </div>
+                <div class="notif-item unread">
+                    <div class="notif-icon orange"><i class="fa-solid fa-truck"></i></div>
+                    <div>
+                        <p>Order <strong>#ORD-0022</strong> is out for delivery.</p>
+                        <span>Yesterday</span>
+                    </div>
+                </div>
+                <div class="notif-item">
+                    <div class="notif-icon teal"><i class="fa-solid fa-tag"></i></div>
+                    <div>
+                        <p>Flash Sale! Up to <strong>70% off</strong> on summer collection.</p>
+                        <span>2 days ago</span>
+                    </div>
+                </div>
+            </div>
+            <a href="#" class="notif-footer" data-section="notifications">View all notifications</a>
+        </div>
+        <section class="dashboard-section active" id="section-overview">
+            <div class="section-header">
+                <h1>Welcome back, <span id="welcomeName">John</span> 👋</h1>
+                <p>Here's what's happening with your account today.</p>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-card" style="--accent: #088178;">
+                    <div class="stat-icon"><i class="fa-solid fa-box"></i></div>
+                    <div class="stat-info">
+                        <h3 id="totalOrdersStat">0</h3>
+                        <p>Total Orders</p>
+                    </div>
+                    <div class="stat-trend neutral" id="ordersTrendText"><i class="fa-solid fa-minus"></i> No orders yet</div>
+                </div>
+                <div class="stat-card" style="--accent: #e63946;">
+                    <div class="stat-icon"><i class="fa-solid fa-heart"></i></div>
+                    <div class="stat-info">
+                        <h3 id="wishlistStat">0</h3>
+                        <p>Wishlist Items</p>
+                    </div>
+                    <div class="stat-trend neutral"><i class="fa-solid fa-minus"></i> No change</div>
+                </div>
+                <div class="stat-card" style="--accent: #f4a261;">
+                    <div class="stat-icon"><i class="fa-solid fa-truck"></i></div>
+                    <div class="stat-info">
+                        <h3 id="inTransitStat">0</h3>
+                        <p>In Transit</p>
+                    </div>
+                    <div class="stat-trend neutral" id="transitTrendText"><i class="fa-solid fa-minus"></i> None in transit</div>
+                </div>
+                <div class="stat-card" style="--accent: #7b2d8b;">
+                    <div class="stat-icon"><i class="fa-solid fa-dollar-sign"></i></div>
+                    <div class="stat-info">
+                        <h3 id="totalSpentStat">$0.00</h3>
+                        <p>Total Spent</p>
+                    </div>
+                    <div class="stat-trend neutral"><i class="fa-solid fa-minus"></i> No spending yet</div>
+                </div>
+            </div>
+            <div class="overview-grid">
+                <div class="card">
+                    <div class="card-header">
+                        <h4><i class="fa-solid fa-clock-rotate-left"></i> Recent Orders</h4>
+                        <a href="#" class="card-link" data-section="orders">View all</a>
+                    </div>
+                    <div class="order-list" id="recentOrdersList">
+                        <!-- Populated dynamically by dashboard.js -->
+                    </div>
+                </div>
+                <div class="card" id="dashboard-active-cart-card">
+                    <div class="card-header">
+                        <h4><i class="fa-solid fa-shopping-cart"></i> Active Cart</h4>
+                        <a href="cart.html" class="card-link">View Cart</a>
+                    </div>
+                    <div class="order-list" id="dashboardActiveCartList">
+                        <!-- Loaded dynamically via JS -->
+                        <div style="text-align:center;padding:20px;color:var(--text-light);">
+                            Cart is empty.
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h4><i class="fa-solid fa-bolt"></i> Quick Actions</h4>
+                    </div>
+                    <div class="quick-actions">
+                        <a href="shop.html" class="quick-action-btn">
+                            <i class="fa-solid fa-bag-shopping"></i>
+                            <span>Continue Shopping</span>
+                        </a>
+                        <a href="#" class="quick-action-btn" data-section="orders">
+                            <i class="fa-solid fa-box-open"></i>
+                            <span>Track Orders</span>
+                        </a>
+                        <a href="#" class="quick-action-btn" data-section="wishlist">
+                            <i class="fa-solid fa-heart"></i>
+                            <span>My Wishlist</span>
+                        </a>
+                        <a href="cart.html" class="quick-action-btn">
+                            <i class="fa-solid fa-shopping-cart"></i>
+                            <span>View Cart</span>
+                        </a>
+                        <a href="#" class="quick-action-btn" data-section="addresses">
+                            <i class="fa-solid fa-map-pin"></i>
+                            <span>My Addresses</span>
+                        </a>
+                        <a href="#" class="quick-action-btn" data-section="profile">
+                            <i class="fa-solid fa-user-pen"></i>
+                            <span>Edit Profile</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="promo-banner">
+                <div class="promo-text">
+                    <h3>🔥 Exclusive Member Deal</h3>
+                    <p>Get <strong>20% off</strong> your next order! Use code <span class="promo-code">MEMBER20</span></p>
+                </div>
+                <a href="shop.html" class="promo-btn">Shop Now</a>
+            </div>
+        </section>
+        <section class="dashboard-section" id="section-orders">
+            <div class="section-header">
+                <h1>My Orders</h1>
+                <p>Track and manage all your orders in one place.</p>
+            </div>
+            <div class="orders-filter">
+                <button class="filter-btn active" data-filter="all">All Orders</button>
+                <button class="filter-btn" data-filter="processing">Processing</button>
+                <button class="filter-btn" data-filter="transit">In Transit</button>
+                <button class="filter-btn" data-filter="delivered">Delivered</button>
+                <button class="filter-btn" data-filter="cancelled">Cancelled</button>
+                <div class="filter-search">
+                    <i class="fa-solid fa-search"></i>
+                    <input type="text" placeholder="Search orders..." id="orderSearch">
+                </div>
+            </div>
+            <div class="orders-table-wrap card">
+                <table class="orders-table" id="ordersTable">
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Product</th>
+                            <th>Date</th>
+                            <th>Amount</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="ordersTableBody">
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-overlay" id="orderModal">
+                <div class="modal">
+                    <button class="modal-close" id="closeOrderModal"><i class="fa-solid fa-times"></i></button>
+                    <h4>Order Details</h4>
+                    <div id="orderModalContent"></div>
+                </div>
+            </div>
+        </section>
+        <section class="dashboard-section" id="section-wishlist">
+            <div class="section-header">
+                <h1>My Wishlist</h1>
+                <p>Items you've saved for later.</p>
+            </div>
+            <div class="wishlist-grid" id="wishlistGrid">
+            </div>
+        </section>
+        <section class="dashboard-section" id="section-addresses">
+            <div class="section-header">
+                <h1>My Addresses</h1>
+                <p>Manage your saved delivery addresses.</p>
+            </div>
+            <div class="addresses-grid" id="addressesGrid">
+                <div class="address-card default">
+                    <div class="address-badge">Default</div>
+                    <div class="address-icon"><i class="fa-solid fa-home"></i></div>
+                    <h5>John Doe</h5>
+                    <p>562 Wellington Road, Street 32<br>San Francisco, CA 94107<br>United States</p>
+                    <span>📞 +01 2222 365</span>
+                    <div class="address-actions">
+                        <button class="btn-edit"><i class="fa-solid fa-pen"></i> Edit</button>
+                        <button class="btn-delete"><i class="fa-solid fa-trash"></i> Delete</button>
+                    </div>
+                </div>
+                <div class="address-card">
+                    <div class="address-icon"><i class="fa-solid fa-briefcase"></i></div>
+                    <h5>John Doe (Office)</h5>
+                    <p>100 Market Street, Suite 300<br>San Francisco, CA 94105<br>United States</p>
+                    <span>📞 +01 2222 999</span>
+                    <div class="address-actions">
+                        <button class="btn-edit"><i class="fa-solid fa-pen"></i> Edit</button>
+                        <button class="btn-delete"><i class="fa-solid fa-trash"></i> Delete</button>
+                        <button class="btn-default">Set Default</button>
+                    </div>
+                </div>
+                <div class="address-add-card" id="addAddressBtn">
+                    <i class="fa-solid fa-plus"></i>
+                    <span>Add New Address</span>
+                </div>
+            </div>
+            <div class="modal-overlay" id="addressModal">
+                <div class="modal">
+                    <button class="modal-close" id="closeAddressModal"><i class="fa-solid fa-times"></i></button>
+                    <h4>Add New Address</h4>
+                    <form class="address-form" id="addressForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Full Name</label>
+                                <input type="text" placeholder="Full name" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Phone</label>
+                                <input type="tel" placeholder="Phone number">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Street Address</label>
+                            <input type="text" placeholder="Street address" required>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>City</label>
+                                <input type="text" placeholder="City" required>
+                            </div>
+                            <div class="form-group">
+                                <label>State / ZIP</label>
+                                <input type="text" placeholder="State, ZIP">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Country</label>
+                            <select>
+                                <option>United States</option>
+                                <option>United Kingdom</option>
+                                <option>Canada</option>
+                                <option>Nigeria</option>
+                                <option>Australia</option>
+                            </select>
+                        </div>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="setDefault"> Set as default address
+                        </label>
+                        <button type="submit" class="btn-submit">Save Address</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+        <section class="dashboard-section" id="section-payments">
+            <div class="section-header">
+                <h1>Payment Methods</h1>
+                <p>Manage your saved cards and payment options.</p>
+            </div>
+            <div class="payments-grid">
+                <div class="payment-card visa">
+                    <div class="card-chip"><i class="fa-solid fa-microchip"></i></div>
+                    <div class="card-number">•••• •••• •••• 4242</div>
+                    <div class="card-footer">
+                        <div>
+                            <span class="card-label">Card Holder</span>
+                            <span class="card-value">John Doe</span>
+                        </div>
+                        <div>
+                            <span class="card-label">Expires</span>
+                            <span class="card-value">12/27</span>
+                        </div>
+                        <i class="fa-brands fa-cc-visa card-brand"></i>
+                    </div>
+                    <div class="card-badge">Default</div>
+                    <div class="payment-card-actions">
+                        <button class="btn-delete"><i class="fa-solid fa-trash"></i></button>
+                    </div>
+                </div>
+                <div class="payment-card mastercard">
+                    <div class="card-chip"><i class="fa-solid fa-microchip"></i></div>
+                    <div class="card-number">•••• •••• •••• 8888</div>
+                    <div class="card-footer">
+                        <div>
+                            <span class="card-label">Card Holder</span>
+                            <span class="card-value">John Doe</span>
+                        </div>
+                        <div>
+                            <span class="card-label">Expires</span>
+                            <span class="card-value">05/26</span>
+                        </div>
+                        <i class="fa-brands fa-cc-mastercard card-brand"></i>
+                    </div>
+                    <div class="payment-card-actions">
+                        <button class="btn-default">Set Default</button>
+                        <button class="btn-delete"><i class="fa-solid fa-trash"></i></button>
+                    </div>
+                </div>
+                <div class="payment-add-card" id="addPaymentBtn">
+                    <i class="fa-solid fa-plus"></i>
+                    <span>Add New Card</span>
+                </div>
+            </div>
+        </section>
+        <section class="dashboard-section" id="section-notifications">
+            <div class="section-header">
+                <h1>Notifications</h1>
+                <p>Stay updated with your account activity.</p>
+            </div>
+            <div class="card">
+                <div class="notif-full-list" id="notifFullList">
+                </div>
+            </div>
+        </section>
+        <section class="dashboard-section" id="section-profile">
+            <div class="section-header">
+                <h1>Edit Profile</h1>
+                <p>Update your personal information.</p>
+            </div>
+            <div class="profile-grid">
+                <div class="card profile-avatar-card">
+                    <div class="profile-avatar-wrap">
+                        <div class="profile-avatar-large" id="profileAvatarLarge">JD</div>
+                        <button class="avatar-change-btn" id="avatarChangeBtn">
+                            <i class="fa-solid fa-camera"></i>
+                        </button>
+                    </div>
+                    <h4 id="profileFullName">John Doe</h4>
+                    <p id="profileEmailDisplay">john@example.com</p>
+                    <span class="member-since">Member since Jan 2024</span>
+                </div>
+                <div class="card profile-form-card">
+                    <h4>Personal Information</h4>
+                    <form class="profile-form" id="profileForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>First Name</label>
+                                <input type="text" id="editFirstName" placeholder="First name">
+                            </div>
+                            <div class="form-group">
+                                <label>Last Name</label>
+                                <input type="text" id="editLastName" placeholder="Last name">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Email Address</label>
+                            <input type="email" id="editEmail" placeholder="Email address">
+                        </div>
+                        <div class="form-group">
+                            <label>Phone Number</label>
+                            <input type="tel" id="editPhone" placeholder="Phone number">
+                        </div>
+                        <div class="form-group">
+                            <label>Date of Birth</label>
+                            <input type="date" id="editDob">
+                        </div>
+                        <div class="form-group">
+                            <label>Gender</label>
+                            <select id="editGender">
+                                <option>Prefer not to say</option>
+                                <option>Male</option>
+                                <option>Female</option>
+                                <option>Non-binary</option>
+                            </select>
+                        </div>
+                        <h4 style="margin: 24px 0 12px;">Change Password</h4>
+                        <div class="form-group password-toggle-group">
+                            <label>Current Password</label>
+                            <div class="input-with-icon">
+                                <input type="password" id="currentPassword" placeholder="Current password">
+                                <i class="fa-regular fa-eye toggle-eye" data-target="currentPassword"></i>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group password-toggle-group">
+                                <label>New Password</label>
+                                <div class="input-with-icon">
+                                    <input type="password" id="newPassword" placeholder="New password">
+                                    <i class="fa-regular fa-eye toggle-eye" data-target="newPassword"></i>
+                                </div>
+                            </div>
+                            <div class="form-group password-toggle-group">
+                                <label>Confirm Password</label>
+                                <div class="input-with-icon">
+                                    <input type="password" id="confirmPassword" placeholder="Confirm password">
+                                    <i class="fa-regular fa-eye toggle-eye" data-target="confirmPassword"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn-submit" id="saveProfileBtn">Save Changes</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+        <section class="dashboard-section" id="section-settings">
+            <div class="section-header">
+                <h1>Settings</h1>
+                <p>Customize your account preferences.</p>
+            </div>
+            <div class="settings-grid">
+                <div class="card settings-card">
+                    <h4><i class="fa-solid fa-bell"></i> Notification Preferences</h4>
+                    <div class="settings-list">
+                        <div class="settings-row">
+                            <div>
+                                <h6>Order Updates</h6>
+                                <p>Get notified about order status changes</p>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" checked id="toggle-orders">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        <div class="settings-row">
+                            <div>
+                                <h6>Promotions & Deals</h6>
+                                <p>Receive exclusive offers and discounts</p>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" checked id="toggle-promo">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        <div class="settings-row">
+                            <div>
+                                <h6>New Arrivals</h6>
+                                <p>Be the first to know about new products</p>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="toggle-arrivals">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        <div class="settings-row">
+                            <div>
+                                <h6>Email Newsletter</h6>
+                                <p>Weekly fashion tips and news</p>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" checked id="toggle-newsletter">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="card settings-card">
+                    <h4><i class="fa-solid fa-shield-halved"></i> Privacy & Security</h4>
+                    <div class="settings-list">
+                        <div class="settings-row">
+                            <div>
+                                <h6>Two-Factor Authentication</h6>
+                                <p>Secure your account with 2FA</p>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="toggle-2fa">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        <div class="settings-row">
+                            <div>
+                                <h6>Login Alerts</h6>
+                                <p>Get alerted on new logins</p>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" checked id="toggle-login-alert">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card settings-card danger-zone">
+                    <h4><i class="fa-solid fa-triangle-exclamation"></i> Danger Zone</h4>
+                    <div class="settings-list">
+                        <div class="settings-row">
+                            <div>
+                                <h6>Delete Account</h6>
+                                <p>Permanently delete your account and all data. This cannot be undone.</p>
+                            </div>
+                            <button class="btn-danger" id="deleteAccountBtn">Delete Account</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+    <div class="toast" id="toast">
+        <i class="fa-solid fa-circle-check"></i>
+        <span id="toastMsg">Changes saved successfully!</span>
+    </div>
+    <div class="modal-overlay" id="deleteModal">
+        <div class="modal">
+            <div class="modal-icon danger"><i class="fa-solid fa-triangle-exclamation"></i></div>
+            <h4>Delete Account?</h4>
+            <p>This action is <strong>permanent</strong> and cannot be undone. All your data will be erased.</p>
+            <div class="modal-btns">
+                <button class="btn-cancel" id="cancelDelete">Cancel</button>
+                <button class="btn-danger" id="confirmDelete">Yes, Delete</button>
+            </div>
+        </div>
+    </div>
+    <script src="dashboard.js"></script>
+</body>
+
+</html>
