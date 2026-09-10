@@ -102,7 +102,7 @@ if (close) {
     });
 }
 
-// Close navbar when clicking outside of it
+// Close navbar when clicking outside of it or on a navigation link
 document.addEventListener('click', (e) => {
     if (nav && nav.classList.contains('active')) {
         if (!nav.contains(e.target) && e.target !== bar) {
@@ -112,6 +112,18 @@ document.addEventListener('click', (e) => {
         }
     }
 });
+
+if (nav) {
+    nav.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', (e) => {
+            if (e.currentTarget.getAttribute('href') !== '#' && !e.currentTarget.closest('#close')) {
+                nav.classList.remove('active');
+                document.body.style.overflow = '';
+                toggleMobileBag(false);
+            }
+        });
+    });
+}
 
 // ── Scroll Reveal (Intersection Observer) ────────────────
 document.addEventListener('DOMContentLoaded', () => {
@@ -612,11 +624,13 @@ document.addEventListener('DOMContentLoaded', () => {
             0%, 80%, 100% { transform: scale(0); }
             40% { transform: scale(1); }
         }
-        @media (max-width: 400px) {
+        @media (max-width: 480px) {
             #chat-window {
-                width: 90vw;
+                width: calc(100vw - 24px);
+                max-width: 360px;
                 height: 70vh;
-                right: -10px;
+                max-height: 480px;
+                right: 0;
                 bottom: 70px;
             }
         }

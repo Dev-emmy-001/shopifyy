@@ -1108,3 +1108,12 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
 
     .admin-inventory-grid { grid-template-columns: repeat(2, 1fr); }
 }
+
+@media (max-width: 480px) {
+    .admin-kpi-grid { grid-template-columns: 1fr; }
+    .admin-inventory-grid { grid-template-columns: 1fr; }
+    .admin-topbar { padding: 0 12px; }
+    .admin-panel { padding: 12px 10px 24px; }
+    .admin-order-row, .admin-user-row { padding: 10px 10px; gap: 8px; flex-wrap: wrap; }
+}
+

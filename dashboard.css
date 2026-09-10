@@ -602,10 +602,16 @@ p { color: var(--text-mid); font-size: 14px; }
 .filter-search i { color: var(--text-light); font-size: 13px; }
 .filter-search input { border: none; outline: none; font-size: 13px; color: var(--text-dark); width: 200px; }
 
-.orders-table-wrap { overflow: auto; }
+.orders-table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    width: 100%;
+}
 
 .orders-table {
-    width: 100%; border-collapse: collapse;
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 550px;
 }
 .orders-table thead tr {
     background: var(--body-bg);
