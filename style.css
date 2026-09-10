@@ -7,7 +7,18 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+body, button, input, select, textarea {
     font-family: 'Spartan', sans-serif;
+}
+
+/* Ensure Font Awesome icons always display with correct icon font */
+.fa, .fa-solid, .fa-regular, .fa-brands, [class*="fa-"], [class^="fa-"] {
+    font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands", "FontAwesome" !important;
+}
+.fa-brands {
+    font-family: "Font Awesome 6 Brands" !important;
 }
 
 html {
@@ -1813,49 +1824,52 @@ body.dark-mode #form-details .people div p span { color: #f1f1f1; }
    RESPONSIVENESS BREAKPOINTS
    ========================================================== */
 
-/* ─── 1. TABLETS & SMALL LAPTOPS (<= 1024px) ─────────────── */
-@media (max-width: 1024px) {
-    .section-p1 {
-        padding: 40px 40px;
-    }
+/* ─── 1. LAPTOPS & DESKTOPS (<= 1200px) ──────────────────── */
+@media (max-width: 1200px) {
     #header {
-        padding: 16px 40px;
+        padding: 14px 28px;
     }
-    #banner-3 {
-        padding: 0 40px;
+    #header .logo,
+    #header img.logo {
+        max-width: 160px;
     }
-    #product-1 .pro {
-        width: 30%;
-        min-width: 220px;
+    #navbar {
+        gap: 2px;
     }
-    #blog {
-        padding: 60px 40px 0 40px;
+    #navbar li {
+        padding: 0 8px;
     }
-    #newsletter {
-        padding: 40px 40px;
+    #navbar li a {
+        font-size: 14px;
     }
-    #recently-viewed {
-        padding: 40px 40px;
+    #navbar a button {
+        padding: 8px 12px;
+        font-size: 13px;
     }
-    #form-details {
-        padding: 40px 30px;
-        margin: 20px 40px;
+    #currency-switcher {
+        padding: 4px 6px;
+        font-size: 12px;
+    }
+    #search-trigger,
+    .dark-mode-toggle {
+        font-size: 16px;
+        padding: 4px;
     }
 }
 
-/* ─── 2. TABLETS & LARGE PHONES (<= 799px) ───────────────── */
-@media (max-width: 799px) {
+/* ─── 2. TABLETS & SCREENS UP TO 991PX (<= 991px) ────────── */
+@media (max-width: 991px) {
     .section-p1 {
         padding: 35px 25px;
     }
 
     #header {
-        padding: 14px 25px;
+        padding: 12px 20px;
     }
 
     #header .logo,
     #header img.logo {
-        max-width: 160px;
+        max-width: 150px;
     }
 
     /* Mobile Navbar Drawer */

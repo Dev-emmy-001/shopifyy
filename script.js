@@ -885,12 +885,27 @@ document.addEventListener('DOMContentLoaded', () => {
 document.addEventListener('DOMContentLoaded', () => {
 
     // 1. Dark Mode Toggle
+    function updateAllDarkModeButtons(darkActive) {
+        const iconHTML = darkActive ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
+        document.querySelectorAll('.dark-mode-toggle').forEach(btn => {
+            btn.innerHTML = iconHTML;
+            btn.style.animation = 'successPop 0.3s ease';
+            setTimeout(() => btn.style.animation = '', 300);
+        });
+    }
+
+    const isDarkMode = localStorage.getItem('fashionDarkMode') === 'true';
+    if (isDarkMode) {
+        document.body.classList.add('dark-mode');
+    }
+
     const navbar = document.getElementById('navbar');
     if (navbar && !document.getElementById('dark-mode-toggle')) {
         const toggleBtn = document.createElement('button');
         toggleBtn.id = 'dark-mode-toggle';
         toggleBtn.className = 'dark-mode-toggle';
-        toggleBtn.innerHTML = '<i class="fa-regular fa-moon"></i>';
+        toggleBtn.setAttribute('aria-label', 'Toggle Dark Mode');
+        toggleBtn.innerHTML = isDarkMode ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
         
         // Append before cart bag
         const lgBag = document.getElementById('lg-bag');
@@ -900,27 +915,32 @@ document.addEventListener('DOMContentLoaded', () => {
             navbar.appendChild(toggleBtn);
         }
 
-        // Check local storage for dark mode preference
-        const isDarkMode = localStorage.getItem('fashionDarkMode') === 'true';
-        if (isDarkMode) {
-            document.body.classList.add('dark-mode');
-            toggleBtn.innerHTML = '<i class="fa-solid fa-sun"></i>';
-        }
-
         toggleBtn.addEventListener('click', () => {
             document.body.classList.toggle('dark-mode');
             const darkActive = document.body.classList.contains('dark-mode');
             localStorage.setItem('fashionDarkMode', darkActive);
-            
-            if (darkActive) {
-                toggleBtn.innerHTML = '<i class="fa-solid fa-sun"></i>';
-                // Add tiny pulse animation
-                toggleBtn.style.animation = 'successPop 0.3s ease';
-            } else {
-                toggleBtn.innerHTML = '<i class="fa-regular fa-moon"></i>';
-                toggleBtn.style.animation = 'successPop 0.3s ease';
-            }
-            setTimeout(() => toggleBtn.style.animation = '', 300);
+            updateAllDarkModeButtons(darkActive);
+        });
+    }
+
+    // Also add dark mode toggle to mobile header
+    const mobileHeader = document.getElementById('mobile');
+    if (mobileHeader && !document.getElementById('mobile-dark-mode-toggle')) {
+        const mobileToggleBtn = document.createElement('button');
+        mobileToggleBtn.id = 'mobile-dark-mode-toggle';
+        mobileToggleBtn.className = 'dark-mode-toggle';
+        mobileToggleBtn.setAttribute('aria-label', 'Toggle Dark Mode');
+        mobileToggleBtn.innerHTML = isDarkMode ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
+        
+        const bar = document.getElementById('bar');
+        if (bar) mobileHeader.insertBefore(mobileToggleBtn, bar);
+        else mobileHeader.appendChild(mobileToggleBtn);
+
+        mobileToggleBtn.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            const darkActive = document.body.classList.contains('dark-mode');
+            localStorage.setItem('fashionDarkMode', darkActive);
+            updateAllDarkModeButtons(darkActive);
         });
     }
 
@@ -1135,11 +1155,30 @@ document.addEventListener('DOMContentLoaded', () => {
         if (navbar && !document.getElementById('search-trigger')) {
             const searchBtn = document.createElement('button');
             searchBtn.id = 'search-trigger';
+            searchBtn.className = 'search-trigger-btn';
             searchBtn.setAttribute('aria-label', 'Open search');
             searchBtn.innerHTML = '<i class="fa-solid fa-magnifying-glass"></i>';
             const lgBag = document.getElementById('lg-bag');
             if (lgBag) navbar.insertBefore(searchBtn, lgBag);
             else navbar.appendChild(searchBtn);
+        }
+
+        // Also inject search trigger into mobile header
+        const mobileHeader = document.getElementById('mobile');
+        if (mobileHeader && !document.getElementById('mobile-search-trigger')) {
+            const mobileSearchBtn = document.createElement('button');
+            mobileSearchBtn.id = 'mobile-search-trigger';
+            mobileSearchBtn.className = 'search-trigger-btn';
+            mobileSearchBtn.setAttribute('aria-label', 'Open search');
+            mobileSearchBtn.style.cssText = 'background:none; border:none; color:inherit; font-size:18px; cursor:pointer; padding:4px;';
+            mobileSearchBtn.innerHTML = '<i class="fa-solid fa-magnifying-glass"></i>';
+            const mobileDarkToggle = document.getElementById('mobile-dark-mode-toggle');
+            if (mobileDarkToggle) mobileHeader.insertBefore(mobileSearchBtn, mobileDarkToggle);
+            else {
+                const bar = document.getElementById('bar');
+                if (bar) mobileHeader.insertBefore(mobileSearchBtn, bar);
+                else mobileHeader.appendChild(mobileSearchBtn);
+            }
         }
 
         // Inject search overlay HTML
@@ -1161,6 +1200,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const searchInput = document.getElementById('search-input');
         const resultsPanel = document.getElementById('search-results-panel');
         const trigger = document.getElementById('search-trigger');
+        const mobileTrigger = document.getElementById('mobile-search-trigger');
         const closeBtn = document.getElementById('close-search-overlay');
 
         function openSearch() {
@@ -1174,6 +1214,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         if (trigger) trigger.addEventListener('click', openSearch);
+        if (mobileTrigger) mobileTrigger.addEventListener('click', openSearch);
         if (closeBtn) closeBtn.addEventListener('click', closeSearch);
         overlay.addEventListener('click', (e) => { if (e.target === overlay) closeSearch(); });
         document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeSearch(); });
